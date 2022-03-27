@@ -14,13 +14,16 @@ import {MatIconModule} from "@angular/material/icon";
 import {ReactiveFormsModule} from "@angular/forms";
 import { ProfilComponent } from './profil/profil.component';
 import {MatButtonModule} from "@angular/material/button";
+import { AccueilComponent } from './accueil/accueil.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    ProfilComponent
+    ProfilComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
