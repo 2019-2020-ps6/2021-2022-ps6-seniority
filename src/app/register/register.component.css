@@ -6,7 +6,20 @@
 }
 
 .custom-title {
-  color: grey;
-  margin: 5% 0 2% 0;
+  color: black;
+  margin: 10% 0 1% 0;
   text-align: center;
+  font-style: italic;
+}
+
+.link {
+  font-weight: bold;
+  margin-left : 6px;
+}
+
+.connexion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top : 6px;
 }

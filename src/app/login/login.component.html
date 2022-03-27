@@ -4,7 +4,7 @@
   <mat-form-field appearance="fill" [style.width.px]=335>
     <mat-label>Enter your email</mat-label>
     <input matInput placeholder="pat@example.com" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    <mat-error class="error" *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
 </div>
 
@@ -19,3 +19,9 @@
 
   <button mat-stroked-button color="grey" [style.width.px]=290>Se connecter</button>
 </div>
+
+<div class="inscription">
+  <a>Vous débutez sur Séniority ? </a>
+  <a routerLink="/register" class="link">  S'inscrire</a>
+</div>
+
