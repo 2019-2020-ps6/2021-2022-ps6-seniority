@@ -1,4 +1,19 @@
-<p>profil works!</p>
+<h1 class="mat-h1" style="text-align: center">Profil</h1>
 
-<br>
-<h1 *ngIf="profil" class="mat-h1">{{profil.name}}</h1>
+<div class="split left">
+  <div class="centered">
+    <h1 *ngIf="profil" class="mat-h1">{{profil.name}}</h1>
+    <h2 *ngIf="profil" class="mat-h1">{{profil.email}}</h2>
+    <button mat-stroked-button color="primary" [style.width.px]=290>Mes quizs</button>
+    <br>
+    <button mat-stroked-button color="primary" [style.width.px]=290>Déconnexion</button>
+  </div>
+</div>
+
+<div class="split right">
+  <div class="centered">
+    <h1>Liste des séniors :</h1>
+    <br>
+    <button mat-stroked-button color="primary" [style.width.px]=290>Ajouter un sénior</button>
+  </div>
+</div>
