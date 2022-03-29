@@ -1,4 +1,4 @@
-import {Profil} from "../models/profil.model";
+import {Profil} from "../models/user.model";
 
 export const PROFIL_LIST: Profil[] = [
   {

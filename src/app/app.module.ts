@@ -16,6 +16,7 @@ import { ProfilComponent } from './profil/profil.component';
 import {MatButtonModule} from "@angular/material/button";
 import { AccueilComponent } from './accueil/accueil.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatSelectModule,
     MatInputModule,
     MatIconModule,
+    HttpClientModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatGridListModule

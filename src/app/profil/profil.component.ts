@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Profil} from "../models/profil.model";
-import {ProfilService} from "../services/profil.service";
+import {User} from "../models/user.model";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-profil',
@@ -10,10 +10,10 @@ import {ProfilService} from "../services/profil.service";
 })
 export class ProfilComponent implements OnInit {
 
-  public profil : Profil | undefined;
+  public user : User | undefined;
 
   constructor(private route: ActivatedRoute,
-              private service: ProfilService) { }
+              private service: UserService) { }
 
   ngOnInit(): void {
     this.getProfil();
@@ -21,6 +21,5 @@ export class ProfilComponent implements OnInit {
 
   getProfil(): void{
     const id = this.route.snapshot.paramMap.get('id');
-    this.profil = this.service.getProfilFromId(id);
   }
 }
