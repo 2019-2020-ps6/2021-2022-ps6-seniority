@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UserService {
 
-  private user?: User;
+  user?: User;
   private url: string = "http://localhost:9428/api/users";
 
   constructor(private http : HttpClient) {
@@ -16,6 +16,7 @@ export class UserService {
   addUser(user : User) : Promise<boolean> {
     return new Promise<boolean>(resolve => {
       this.http.post(this.url,{... user}).subscribe(next => {
+        this.user = next as User;
         if (next)
           resolve(true);
         resolve(false);
@@ -23,5 +24,12 @@ export class UserService {
     });
   }
 
-
+  getUserFromId(id : string | null) : Promise<User>{
+    return new Promise(resolve => {
+      this.http.get(`${this.url}/${id}`).subscribe(next => {
+          this.user = next as User;
+          resolve(next as User);
+      })
+    })
+  }
 }

@@ -10,16 +10,15 @@ import {UserService} from "../services/user.service";
 })
 export class ProfilComponent implements OnInit {
 
-  public user : User | undefined;
+  public user: User | undefined;
 
   constructor(private route: ActivatedRoute,
-              private service: UserService) { }
+              private service: UserService) {
+  }
 
   ngOnInit(): void {
-    this.getProfil();
-  }
-
-  getProfil(): void{
-    const id = this.route.snapshot.paramMap.get('id');
+    console.log(this.service.user);
+    this.user = this.service.user;
   }
 }
+

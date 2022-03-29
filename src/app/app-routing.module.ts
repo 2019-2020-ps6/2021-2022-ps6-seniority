@@ -8,7 +8,7 @@ import {AccueilComponent} from "./accueil/accueil.component";
 const routes: Routes = [
   {path : 'register', component : RegisterComponent},
   {path : 'login', component : LoginComponent},
-  {path : 'profil/:id', component : ProfilComponent},
+  {path : 'profil', component : ProfilComponent},
   {path : 'accueil', component : AccueilComponent}
 ];
 
