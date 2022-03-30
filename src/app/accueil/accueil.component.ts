@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../services/user.service";
+import {Quiz} from "../models/quiz.model";
+import {QuizService} from "../services/quiz.service";
 
 @Component({
   selector: 'app-accueil',
@@ -8,9 +10,12 @@ import {UserService} from "../services/user.service";
 })
 export class AccueilComponent implements OnInit {
 
-  constructor(private userService : UserService) { }
+  quizzes?: Quiz[];
+
+  constructor(private userService : UserService,private quizService : QuizService) { }
 
   ngOnInit(): void {
+    this.quizService.getQuizzes().then(value => this.quizzes = value);
   }
 
 }

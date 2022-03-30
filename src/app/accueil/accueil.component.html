@@ -11,10 +11,9 @@
   <mat-grid-tile colspan="7" rowspan="15">
     <div class='internalMatGrid' >
       <mat-grid-list gutterSize="15px" cols="2" rowHeight="4:1">
-        <mat-grid-tile>Quiz1</mat-grid-tile>
-        <mat-grid-tile>Quiz2</mat-grid-tile>
-        <mat-grid-tile>Quiz3</mat-grid-tile>
-        <mat-grid-tile>Quiz4</mat-grid-tile>
+        <mat-grid-tile *ngFor="let quiz of quizzes">
+          {{quiz.name}}
+        </mat-grid-tile>
       </mat-grid-list>
     </div>
   </mat-grid-tile>
