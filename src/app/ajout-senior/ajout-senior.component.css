@@ -1,0 +1,18 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.custom-title {
+  color: black;
+  margin: 10% 0 1% 0;
+  text-align: center;
+  font-style: italic;
+}
+
+.link {
+  font-weight: bold;
+  margin-left : 6px;
+}
