@@ -23,13 +23,4 @@ export class UserService {
       });
     });
   }
-
-  getUserFromId(id : string | null) : Promise<User>{
-    return new Promise(resolve => {
-      this.http.get(`${this.url}/${id}`).subscribe(next => {
-          this.user = next as User;
-          resolve(next as User);
-      })
-    })
-  }
 }

@@ -1,26 +1,30 @@
+<h1 *ngIf="user">Vous êtes : {{user.name}}</h1>
+
 <h1 class="mat-h1 custom-title">Inscription professionel <br> de santé</h1>
 <form class="parent" [formGroup]="seniorform">
   <mat-form-field appearance="fill" [style.width.px]=335>
     <mat-label>Nom</mat-label>
-    <input matInput [formControlName]="'name'">
+    <input matInput [formControlName]="'nom'">
   </mat-form-field>
   <mat-form-field appearance="fill" [style.width.px]=335>
     <mat-label>Prénom</mat-label>
-    <input matInput [formControlName]="'name'">
+    <input matInput [formControlName]="'prenom'">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Date de naissance</mat-label>
-    <input matInput [matDatepicker]="picker">
+    <input matInput [matDatepicker]="picker" [formControlName]="'dateNaissance'">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Handicap</mat-label>
-    <mat-select>
-      <mat-option value="one">Glaucome à angle ouvert</mat-option>
+    <mat-select [formControlName]="'handicap'">
+      <mat-option value="Glaucome à angle ouvert">Glaucome à angle ouvert</mat-option>
     </mat-select>
   </mat-form-field>
   <button mat-stroked-button color="grey" [disabled]="!seniorform.valid"
           (click)="addProfilPatient()"
           [style.width.px]=290>Valider</button>
 </form>
+
+<h2>{{seniorform.getRawValue() | json}}</h2>

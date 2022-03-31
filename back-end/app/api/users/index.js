@@ -1,9 +1,12 @@
 const { Router } = require('express')
-
 const { User } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
+const SeniorsRouter = require('./seniors')
 
 const router = new Router()
+
+router.use('/:userId/seniors', SeniorsRouter)
+
 
 router.get('/', (req, res) => {
   try {
