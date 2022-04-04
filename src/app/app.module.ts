@@ -21,6 +21,7 @@ import { AjoutSeniorComponent } from './ajout-senior/ajout-senior.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
+import { QuizCircularComponent } from './quiz-circular/quiz-circular.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
     AccueilComponent,
     AjoutSeniorComponent,
     QuizzesComponent,
-    PlayQuizComponent
+    PlayQuizComponent,
+    QuizCircularComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {AccueilComponent} from "./accueil/accueil.component";
 import {AjoutSeniorComponent} from "./ajout-senior/ajout-senior.component";
 import {PlayQuizComponent} from "./play-quiz/play-quiz.component";
+import {QuizCircularComponent} from "./quiz-circular/quiz-circular.component";
 
 const routes: Routes = [
   {path : 'register', component : RegisterComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path : 'profil', component : ProfilComponent},
   {path : 'accueil', component : AccueilComponent},
   {path : 'ajoutsenior', component : AjoutSeniorComponent},
-  {path : 'quiz/play/:id', component : PlayQuizComponent}
+  {path : 'quiz/play/:id', component : PlayQuizComponent},
+  {path : 'circular', component: QuizCircularComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,52 @@
+.circle{
+  border-radius : 50%;
+  border : 2px solid black;
+  overflow: hidden;
+
+}
+
+.container {
+  display : grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows : repeat(2,1fr);
+  text-align : center;
+}
+
+.one{
+  grid-column : 1;
+  grid-row : 1;
+  border-bottom : 1px solid black;
+  border-right : 1px solid black;
+}
+
+.two{
+  grid-column : 2;
+  grid-row : 1;
+  border-bottom : 1px solid black;
+  border-left: 1px solid black;
+}
+
+.align {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.container:hover{
+  cursor: pointer;
+}
+
+.three{
+  grid-column : 1;
+  grid-row : 2;
+  border-right : 1px solid black;
+  border-top: 1px solid black;
+}
+
+.four{
+  grid-column : 2;
+  grid-row : 2;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}

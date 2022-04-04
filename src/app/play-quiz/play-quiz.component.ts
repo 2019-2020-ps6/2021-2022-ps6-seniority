@@ -18,7 +18,7 @@ export class PlayQuizComponent implements OnInit {
   quiz ?: Quiz;
   quizGame ?: QuizGame;
   currentQuestion ?: Question;
-  currentAnswers ?: Answer[];
+  currentAnswers : Answer[] = [];
   hasAnswered ?: boolean;
 
   constructor(private quizService: QuizService, private quizGameService: QuizGameService, private questionService: QuestionService, private route: ActivatedRoute,private _router: Router) {
@@ -84,9 +84,20 @@ export class PlayQuizComponent implements OnInit {
       this.quizGame.round++;
       this.hasAnswered = false;
       this.updateGame().then(() => this.playAudio(this.currentQuestion));
-    }else{
+    } else {
       this._router.navigateByUrl('/accueil').then(console.log);
     }
+  }
+
+  goodAnswerFunction = () => {
+    if (this.quizGame){
+      this.quizGame.points++;
+      this.hasAnswered = true;
+    }
+  }
+
+  falseAnswerFunction = () => {
+    this.hasAnswered = true;
   }
 
 }
