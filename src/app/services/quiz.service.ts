@@ -19,4 +19,8 @@ export class QuizService {
       });
     });
   }
+
+  async getQuizById(id : number) : Promise<Quiz | undefined>{
+    return this.getQuizzes().then(quizzes => quizzes.filter(quiz => quiz.id === id).pop());
+  }
 }

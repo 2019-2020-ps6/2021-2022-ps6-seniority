@@ -19,6 +19,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {HttpClientModule} from "@angular/common/http";
 import { AjoutSeniorComponent } from './ajout-senior/ajout-senior.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { QuizzesComponent } from './quizzes/quizzes.component';
+import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     LoginComponent,
     ProfilComponent,
     AccueilComponent,
-    AjoutSeniorComponent
+    AjoutSeniorComponent,
+    QuizzesComponent,
+    PlayQuizComponent
   ],
   imports: [
     BrowserModule,
