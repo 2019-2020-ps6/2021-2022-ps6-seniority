@@ -30,4 +30,10 @@ export class QuestionService {
     return audio;
   }
 
+  getAudioAnswers(question : Question,answers : Answer[]) {
+    const audio = new Audio();
+    audio.src = `${this.url}/${question.quizId}/questions/${question.id}/answers/audio`;
+    return audio;
+  }
+
 }

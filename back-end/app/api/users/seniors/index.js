@@ -28,9 +28,9 @@ router.get('/:seniorId', (req, res) => {
 router.post('/', (req, res) => {
   try {
     // Check if userId exists, if not it will throw a NotFoundError
-    User.getById(req.params.quizId)
-    const userId = parseInt(req.params.quizId, 10)
-    let senior = Senior.create({ label: req.body.label, quizId: userId })
+    User.getById(req.params.userId)
+    const userId = parseInt(req.params.userId, 10)
+    let senior = Senior.create({ userId : userId, ...req.body })
     res.status(201).json(senior)
   } catch (err) {
     manageAllErrors(res, err)
@@ -39,27 +39,25 @@ router.post('/', (req, res) => {
 
 router.put('/:seniorId', (req, res) => {
   try {
-    const senior = getSeniorFromUser(req.params.quizId, req.params.questionId)
-    const updatedSenior = Senior.update(req.params.questionId, { label: req.body.label, quizId: senior.quizId })
+    const senior = getSeniorFromUser(req.params.userId, req.params.seniorId)
+    const updatedSenior = Senior.update(req.params.seniorId, { userId : senior.userId, ...req.body })
+    console.log(updatedSenior)
     res.status(200).json(updatedSenior)
   } catch (err) {
+    console.log(err);
     manageAllErrors(res, err)
   }
 })
 
-router.delete('/:questionId', (req, res) => {
+router.delete('/:seniorId', (req, res) => {
   try {
     // Check if the question id exists & if the question has the same quizId as the one provided in the url.
-    getQuestionFromQuiz(req.params.quizId, req.params.questionId)
-    Question.delete(req.params.questionId)
+    getSeniorFromUser(req.params.userId, req.params.seniorId)
+    Senior.delete(req.params.seniorId)
     res.status(204).end()
   } catch (err) {
     manageAllErrors(res, err)
   }
-})
-
-router.use('/:questionId/answers', () => {
-
 })
 
 module.exports = router

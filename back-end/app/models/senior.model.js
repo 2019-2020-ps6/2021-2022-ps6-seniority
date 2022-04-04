@@ -6,5 +6,5 @@ module.exports = new BaseModel('Senior', {
   surname: Joi.string().required(),
   birthdate: Joi.string().required(),
   handicap: Joi.string().required(),
-  userId: Joi.string().required(),
+  userId: Joi.number().required(),
 })

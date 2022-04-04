@@ -67,7 +67,16 @@ export class PlayQuizComponent implements OnInit {
     if (!newQuestion) return;
     const audio = this.questionService.getAudio(newQuestion);
     audio.load();
-    audio.play().then(r => console.log('played !'));
+    audio.play().then(console.log);
+    audio.onended = () => {
+      setTimeout(() => {
+        if (this.currentQuestion && this.currentAnswers) {
+          const audio = this.questionService.getAudioAnswers(this.currentQuestion,this.currentAnswers);
+          audio.load();
+          audio.play().then(console.log);
+        }
+      },2000);
+    }
   }
 
   async nextQuestion() {

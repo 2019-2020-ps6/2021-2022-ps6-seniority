@@ -7,7 +7,6 @@ const router = new Router()
 
 router.use('/:userId/seniors', SeniorsRouter)
 
-
 router.get('/', (req, res) => {
   try {
     res.status(200).json(User.get())
