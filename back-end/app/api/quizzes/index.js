@@ -7,7 +7,7 @@ const { buildQuizz, buildQuizzes } = require('./manager')
 
 const router = new Router()
 
-router.use('/:quizId/questions', QuestionsRouter)
+router.use('/:quizId/current_questions', QuestionsRouter)
 
 router.get('/', (req, res) => {
   try {

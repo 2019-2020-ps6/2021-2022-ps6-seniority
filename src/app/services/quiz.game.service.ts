@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {QuizGame} from "../models/quiz.game.model";
-import {Quiz} from "../models/quiz.model";
-import {User} from "../models/user.model";
+import {Question} from "../models/question.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,7 @@ import {User} from "../models/user.model";
 
 export class QuizGameService {
 
-  private url: string = "http://localhost:9428/api/quizzes";
+  private url: string = "http://localhost:9428/api/game";
   private quizGame ?: QuizGame;
 
   constructor(private http : HttpClient) {
@@ -19,9 +18,17 @@ export class QuizGameService {
   async createGameQuiz(game : QuizGame) : Promise<QuizGame> {
     return new Promise(resolve => {
       this.http.post(this.url, {game}).subscribe(next => {
-        this.quizGame = next as QuizGame;
-        resolve(this.quizGame)
+        resolve(next as QuizGame);
       });
     });
   }
+
+  async getCurrentQuesiton(game : QuizGame) : Promise<Question> {
+    return new Promise(resolve => {
+      this.http.get(`${this.url}/${game.id}/currentQuestion`).subscribe(next => {
+        resolve(next as Question);
+      })
+    })
+  }
+
 }

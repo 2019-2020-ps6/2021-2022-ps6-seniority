@@ -4,7 +4,7 @@ const { filterAnswersFromQuestion } = require('./questions/answers/manager')
 
 /**
  * Function buildQuizz.
- * This function aggregates the questions and answers from the database to build a quizz with all the data needed by the clients.
+ * This function aggregates the current_questions and answers from the database to build a quizz with all the data needed by the clients.
  * @param quizId
  */
 const buildQuizz = (quizId) => {
@@ -19,7 +19,7 @@ const buildQuizz = (quizId) => {
 
 /**
  * Function buildQuizzes.
- * This function aggregates the questions and answers from the database to build entire quizzes.
+ * This function aggregates the current_questions and answers from the database to build entire quizzes.
  */
 const buildQuizzes = () => {
   const quizzes = Quiz.get()

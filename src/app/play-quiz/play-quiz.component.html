@@ -1,1 +1,7 @@
 <h1 class = "custom-title" *ngIf ="quiz">Quiz name is {{quiz.name}}</h1>
+<p *ngIf="currentQuestion">Question : {{currentQuestion.label}}</p>
+<mat-grid-list gutterSize="15px" cols="2" rowHeight="4:1">
+  <mat-grid-tile *ngFor="let answer of currentAnswers">
+    {{answer.value}}
+  </mat-grid-tile>
+</mat-grid-list>
