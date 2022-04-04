@@ -1,7 +1,26 @@
-<h1 class = "custom-title" *ngIf ="quiz">Quiz name is {{quiz.name}}</h1>
-<p *ngIf="currentQuestion">Question : {{currentQuestion.label}}</p>
-<mat-grid-list gutterSize="15px" cols="2" rowHeight="4:1">
-  <mat-grid-tile *ngFor="let answer of currentAnswers">
-    {{answer.value}}
+<mat-grid-list cols="7" rowHeight="7:1">
+  <mat-grid-tile rowspan="3">
+  </mat-grid-tile>
+  <mat-grid-tile rowspan="3" colspan="5">
+    <h1 class="custom-title" *ngIf="quiz">{{quiz?.name}}</h1>
+  </mat-grid-tile>
+  <mat-grid-tile rowspan="3">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="7" rowspan="1">
+    <p *ngIf="currentQuestion"><span *ngIf="quizGame">Question n°{{quizGame.round + 1}} : </span>{{currentQuestion.label}}</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="7" rowspan="14">
+    <div class='internalMatGrid'>
+      <mat-grid-list gutterSize="15px" cols="2" rowHeight="4:1">
+        <mat-grid-tile [class.false]="hasAnswered && !answer.isCorrect"
+                       [class.correct]="hasAnswered && answer.isCorrect" *ngFor="let answer of currentAnswers"
+                       (click)="onClickAnswer()">
+          {{answer.value}}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile rowspan="3" colspan="7">
+    <button mat-stroked-button color="grey" [disabled]="!hasAnswered" (click)="nextQuestion()">Question suivante</button>
   </mat-grid-tile>
 </mat-grid-list>

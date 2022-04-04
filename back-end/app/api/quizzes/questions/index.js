@@ -4,6 +4,8 @@ const { Answer, Quiz, Question } = require('../../../models')
 const manageAllErrors = require('../../../utils/routes/error-management')
 const AnswersRouter = require('./answers')
 const { filterQuestionsFromQuizz, getQuestionFromQuiz } = require('./manager')
+const {buildQuizz, getAudio} = require("../manager");
+const gtts = require('node-gtts')('fr');
 
 const router = new Router({ mergeParams: true })
 
@@ -25,6 +27,18 @@ router.get('/:questionId', (req, res) => {
     manageAllErrors(res, err)
   }
 })
+
+
+router.get('/:questionId/audio', (req, res) => {
+  try {
+    const question = getQuestionFromQuiz(req.params.quizId, req.params.questionId)
+    res.set({'Content-Type' : 'audio/mpeg'});
+    gtts.stream(question.label).pipe(res);
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
+
 
 router.post('/', (req, res) => {
   try {

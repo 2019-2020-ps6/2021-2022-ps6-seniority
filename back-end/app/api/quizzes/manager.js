@@ -1,10 +1,11 @@
 const { Quiz } = require('../../models')
 const { filterQuestionsFromQuizz } = require('./questions/manager')
+const GTTS = require('gtts')
 const { filterAnswersFromQuestion } = require('./questions/answers/manager')
 
 /**
  * Function buildQuizz.
- * This function aggregates the current_questions and answers from the database to build a quizz with all the data needed by the clients.
+ * This function aggregates the questions and answers from the database to build a quizz with all the data needed by the clients.
  * @param quizId
  */
 const buildQuizz = (quizId) => {

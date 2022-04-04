@@ -18,10 +18,16 @@ export class QuestionService {
 
   async getAnswers(question : Question) : Promise<Answer[]> {
     return new Promise(resolve => {
-      this.http.get(`{this.url}/${question.quizId}/question/${question.id}/answers`).subscribe(next => {
+      this.http.get(`${this.url}/${question.quizId}/questions/${question.id}/answers`).subscribe(next => {
         resolve(next as Answer[]);
       })
     })
+  }
+
+  getAudio(question : Question){
+    const audio = new Audio();
+    audio.src = `${this.url}/${question.quizId}/questions/${question.id}/audio`;
+    return audio;
   }
 
 }

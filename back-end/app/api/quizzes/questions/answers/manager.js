@@ -4,7 +4,7 @@ const { getQuestionFromQuiz } = require('../manager')
 
 /**
  * filterAnswersFromQuestion.
- * This function filters among the current_questions to return only the question linked with the given quizId.
+ * This function filters among the questions to return only the question linked with the given quizId.
  * @param questionId
  */
 const filterAnswersFromQuestion = (questionId) => Answer.get().filter((answer) => (answer.questionId === questionId))
