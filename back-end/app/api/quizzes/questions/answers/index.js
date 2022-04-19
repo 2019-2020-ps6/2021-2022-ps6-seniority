@@ -1,9 +1,10 @@
 const { Router } = require('express')
-const { Answer } = require('../../../../models')
+const { Answer, Quiz} = require('../../../../models')
 const gtts = require('node-gtts')('fr');
 
 const { getQuestionFromQuiz } = require('../manager')
 const { filterAnswersFromQuestion, getAnswerFromQuestion } = require('./manager')
+const manageAllErrors = require("../../../../utils/routes/error-management");
 
 const router = new Router({ mergeParams: true })
 
@@ -38,5 +39,17 @@ router.get('/audio',(req,res) => {
     }
   }
 });
+
+router.post('/', (req, res) => {
+  try {
+    // Check if quizId exists, if not it will throw a NotFoundError
+    Quiz.getById(req.params.quizId)
+    const questionId = parseInt(req.params.questionId, 10)
+    let answer = Answer.create({ questionId, ...req.body })
+    res.status(201).json(answer)
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
 
 module.exports = router

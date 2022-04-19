@@ -8,7 +8,7 @@ import {Answer} from "../models/answer.model";
 })
 export class QuizCircularComponent implements OnInit {
 
-  @Input() diameter : number = 400;
+  @Input() percentWidth : number = 0.4;
   @Input() choices : Answer[] = [];
   @Input() showResult ?: boolean;
   @Input() falseColor : string = "red";
@@ -23,7 +23,7 @@ export class QuizCircularComponent implements OnInit {
   }
 
   get diameterStr() {
-    return `${this.diameter}px`;
+    return `${window.innerWidth * this.percentWidth}px`;
   }
 
   correctColor(answer : Answer) {
@@ -39,7 +39,6 @@ export class QuizCircularComponent implements OnInit {
   }
 
   clickOnTile(answer : Answer) {
-    console.log('ddd');
     if (answer.isCorrect)
       this.invokeGoodAnswerCallback();
     else

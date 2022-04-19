@@ -10,7 +10,7 @@
     <p *ngIf="currentQuestion"><span *ngIf="quizGame">Question n°{{quizGame.round + 1}} : </span>{{currentQuestion.label}}</p>
   </mat-grid-tile>
   <mat-grid-tile colspan="7" rowspan="14">
-    <app-quiz-circular [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [choices]="currentAnswers"  [showResult]="hasAnswered"></app-quiz-circular>
+    <app-quiz-circular [percentWidth]="0.25" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [choices]="currentAnswers" [showResult]="hasAnswered"></app-quiz-circular>
   </mat-grid-tile>
   <mat-grid-tile rowspan="3" colspan="7">
     <button mat-stroked-button color="grey" [disabled]="!hasAnswered" (click)="nextQuestion()">Question suivante</button>

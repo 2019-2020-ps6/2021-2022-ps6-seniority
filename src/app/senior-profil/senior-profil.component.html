@@ -1,0 +1,52 @@
+<div class="container" *ngIf="senior">
+  <div class="title align align-center">
+    {{senior.name}}
+  </div>
+  <div class="sub-container left">
+    <div class="sub-left-top">
+      <div class="align align-center left-top-title">
+        Informations
+      </div>
+      <div class="align align-center age-label info">
+        Age
+      </div>
+      <div class="align-center align age-input info">
+        {{age}} ans
+      </div>
+      <div class="align align-center pathology-label info">
+        Pathologie
+      </div>
+      <div class="align-center align pathology-input info">
+        {{handicapName}}
+      </div>
+    </div>
+    <div class="sub-left-bottom">
+      <div class="align align-center sub-left-bottom-title">
+        Configurations
+      </div>
+      <div class="sub-left-bottom-container margin-center">
+        <mat-list *ngFor="let config of handicapsConfig">
+          <mat-list-item class="item-list info">
+            <div class="inner-list-container">
+              <div class="align align-center left-inner-list">
+                {{config.name}}
+              </div>
+              <div class="right-inner-list">
+                <button (click)="update(config)" class="margin-center align-center align" mat-icon-button aria-label="config">
+                  <mat-icon>settings</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+  <div class="sub-container right">
+    <div class="sub-left-top">
+      <div class="align align-center left-top-title">
+        Statistiques
+      </div>
+    </div>
+  </div>
+</div>

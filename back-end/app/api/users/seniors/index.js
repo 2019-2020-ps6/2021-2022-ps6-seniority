@@ -3,8 +3,11 @@ const { Router } = require('express')
 const { User, Senior} = require('../../../models')
 const manageAllErrors = require('../../../utils/routes/error-management')
 const {filterSeniorsFromUser, getSeniorFromUser} = require("./manager");
+const HandicapsRouter = require('./handicap');
 
 const router = new Router({ mergeParams: true })
+
+router.use('/:seniorId/handicaps', HandicapsRouter)
 
 router.get('/', (req, res) => {
   try {

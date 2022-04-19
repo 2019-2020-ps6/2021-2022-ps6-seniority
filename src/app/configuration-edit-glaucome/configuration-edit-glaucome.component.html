@@ -1,0 +1,92 @@
+<div class="container" *ngIf="senior && configuration">
+  <div class="border-left"></div>
+  <div class="border-right"></div>
+  <div class="left-title title align align-center">
+    Configuration
+  </div>
+  <div *ngIf="fullScreenPreview" class="align align-center margin-center full-screen-preview-title">
+    <div style="grid-column: 1;grid-row: 1;" class="align-center align margin-center">
+      <button mat-icon-button>
+        <div style="font-size: 42px">
+          <mat-icon [style.color]="this.fullScreenPreview ? 'blue' : 'black'" (click)="activateFullScreenPreview()" [inline]="true">visibility</mat-icon>
+        </div>
+      </button>
+    </div>
+    <div style="grid-column: 3;grid-row: 1" class="restart-icon align-center align margin-center">
+      <button (click)="restartPreview()" mat-icon-button>
+        <div style="font-size: 42px">
+          <mat-icon [inline]="true">restart_alt</mat-icon>
+        </div>
+      </button>
+    </div>
+    <div style="grid-column: 2;grid-row: 1" class="right-title title align align-center">
+      Prévisualisation
+    </div>
+  </div>
+  <div class="eye-icon align-center align margin-center">
+    <button mat-icon-button>
+      <div style="font-size: 42px">
+        <mat-icon [style.color]="this.fullScreenPreview ? 'blue' : 'black'" (click)="activateFullScreenPreview()" [inline]="true">visibility</mat-icon>
+      </div>
+    </button>
+  </div>
+  <div class="restart-icon align-center align margin-center">
+    <button (click)="restartPreview()" mat-icon-button>
+      <div style="font-size: 42px">
+        <mat-icon [inline]="true">restart_alt</mat-icon>
+      </div>
+    </button>
+  </div>
+  <div class="right-title title align align-center">
+    Prévisualisation
+  </div>
+  <div class="left-config">
+    <div class="sub-left-title align-center align">
+      {{senior.name}} - Glaucome
+    </div>
+    <div class="margin-center align sub-left-name-input">
+      <mat-form-field appearance="fill" [style.width.px]=300>
+        <mat-label>Nom de la configuration</mat-label>
+        <input [(ngModel)]="configuration.name" matInput placeholder="Default" required>
+      </mat-form-field>
+    </div>
+    <div class="margin-center align sub-left-voice-activate">
+      <mat-slide-toggle
+        class="align-center margin"
+        [(ngModel)]="configuration.config.activate_voice">
+        Activer la lecture à haute <br> voix des questions/réponses
+      </mat-slide-toggle>
+    </div>
+    <div class="margin-center align sub-left-circle-activate">
+      <mat-slide-toggle
+        class="align-center margin"
+        [(ngModel)]="configuration.config.circle_quiz"
+        >
+        Activer le quiz en cercle
+      </mat-slide-toggle>
+    </div>
+    <div class="margin-center align align-center sub-left-radius-slider">
+      Diametre
+      <mat-slider
+        [(ngModel)]="configuration.config.radius"
+        thumbLabel
+        step="0.01"
+        min="0.2"
+        max="0.35"
+        aria-label="units">
+      </mat-slider>
+    </div>
+  </div>
+  <div class="preview-container" [class.full-screen-preview-container]="fullScreenPreview">
+    <div class="preview-title align align-center">
+      Quelle est la capitale de l'italie ?
+    </div>
+    <div class="margin-center align-center align">
+      <app-quiz-circular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
+      </app-quiz-circular>
+    </div>
+  </div>
+  <div class="margin-center align align-center save-button">
+    <button (click)="save()" mat-stroked-button color="grey">Enregistrer</button>
+  </div>
+</div>

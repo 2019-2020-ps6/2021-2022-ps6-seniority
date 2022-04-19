@@ -1,0 +1,53 @@
+<div [formGroup]="quizForm" class="container">
+  <div class="title align">
+    Création du Quiz
+  </div>
+  <div class="left-subtitle align">
+    Paramètres du Quiz
+  </div>
+  <div class="right-subtitle align">
+    Thèmes
+  </div>
+  <div class="one align-center">
+    <div class="inner-form">
+      <div class="one-inner align" style="margin: 0 auto">
+        <mat-form-field appearance="fill" [style.width.px]=335>
+          <mat-label>Nom du Quiz</mat-label>
+          <input [formControlName]="'name'" matInput placeholder="Coupe du monde" required >
+        </mat-form-field>
+      </div>
+      <div class="two-inner align" style="margin: 0 auto">
+        <mat-form-field [style.width.px]=335 class="example-full-width" appearance="fill">
+          <mat-label>Commentaires utiles</mat-label>
+          <textarea  [formControlName]="'comments'" matInput placeholder="Ex. Difficulté etc ..."></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="two align-center">
+    <div class="inner-form">
+      <div class="one-inner align" style="margin: 0 auto">
+        <mat-form-field appearance="fill" *ngIf="currentThemes">
+          <mat-label>Thèmes</mat-label>
+          <mat-select  [formControlName]="'theme'">
+            <mat-option *ngFor="let theme of this.currentThemes" [value]="theme.value">
+              {{theme.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="two-inner align" style="margin: 0 auto">
+        <div class="example-button-container add-theme">
+          Ajouter un nouveau thème
+          <br> <br>
+          <button routerLink="theme" mat-fab color="primary"  aria-label="Add theme">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="align-center align question-button">
+    <button routerLink="/quiz/creation/questions" (click)="nextToQuestion()" mat-stroked-button color="grey">Passer aux questions</button>
+  </div>
+</div>

@@ -1,19 +1,49 @@
-<h1 class="mat-h1" style="text-align: center">user</h1>
-
-<div class="split left">
-  <div class="centered">
-    <h1 *ngIf="user" class="mat-h1">{{user.name}}</h1>
-    <h2 *ngIf="user" class="mat-h1">{{user.email}}</h2>
-    <button mat-stroked-button color="primary" [style.width.px]=290>Mes quizs</button>
-    <br>
-    <button mat-stroked-button color="primary" [style.width.px]=290>Déconnexion</button>
+<div class="container" *ngIf="user">
+  <div class="title align-center align">
+    <h1 style="text-align: center">Profil</h1>
   </div>
-</div>
-
-<div class="split right">
-  <div class="centered">
-    <h1>Liste des séniors :</h1>
-    <br>
-    <button mat-stroked-button color="primary" [style.width.px]=290 routerLink="/ajoutsenior">Ajouter un sénior</button>
+  <div class="left-subtitle align">
+    Vos informations
+  </div>
+  <div class="right-subtitle align">
+    Gestions des accueillis
+  </div>
+  <div class="one align-center">
+    <div class="inner-form">
+      <div class="one-inner align" style="font-size: 17px">
+        Nom : {{this.user.name}}
+        <br>
+        E-mail : {{this.user.email}}
+      </div>
+      <div class="two-inner align">
+        <button mat-stroked-button class="margin-center" color="grey" [style.width.px]="300" >Mes quiz</button>
+      </div>
+      <div class="three-inner align">
+        <button mat-stroked-button class="margin-center" color="grey" [style.width.px]="300" >Déconnexion</button>
+      </div>
+    </div>
+  </div>
+  <div class="two align-center">
+    <div class="inner-form-bis">
+      <div class="inner-form-bis-list-container margin-center">
+        <mat-list *ngFor="let senior of seniors">
+          <mat-list-item (click)="chooseSenior(senior)" class="item-list">
+            <div class="inner-list-container">
+              <div class="align align-center inner-list-left">
+                {{senior.name}}
+              </div>
+              <div class="inner-list-right align align-center">
+                <button class="margin-center" mat-icon-button aria-label="Supprimer">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="inner-form-bis-new-senior align">
+        <button routerLink="creation/senior" mat-stroked-button class="margin-center" color="grey" [style.width.px]="300" >Ajouter un nouvel accueilli</button>
+      </div>
+    </div>
   </div>
 </div>

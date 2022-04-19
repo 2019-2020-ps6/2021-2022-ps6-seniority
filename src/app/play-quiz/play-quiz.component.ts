@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Quiz} from "../models/quiz.model";
 import {QuizService} from "../services/quiz.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -18,52 +18,62 @@ export class PlayQuizComponent implements OnInit {
   quiz ?: Quiz;
   quizGame ?: QuizGame;
   currentQuestion ?: Question;
-  currentAnswers : Answer[] = [];
+  currentAnswers: Answer[] = [];
   hasAnswered ?: boolean;
 
-  constructor(private quizService: QuizService, private quizGameService: QuizGameService, private questionService: QuestionService, private route: ActivatedRoute,private _router: Router) {
+  constructor(private quizService: QuizService, private quizGameService: QuizGameService, private questionService: QuestionService, private route: ActivatedRoute, private _router: Router) {
+    this.quizGameService.gameQuiz$.subscribe(game => {
+      this.quizGame = game;
+    });
+    this.quizGameService.question$.subscribe(question => {
+      this.currentQuestion = question;
+    })
+    this.questionService.answers$.subscribe(answers => {
+      this.currentAnswers = answers;
+    })
+    this.quizGameService.quiz$.subscribe(quiz => {
+      this.quiz = quiz;
+    })
   }
 
   ngOnInit(): void {
-    this.quizService.getQuizById(parseInt(this.route.snapshot.paramMap.get('id') as string)).then(q => {
-      this.quiz = q;
-      if (this.quiz?.id) {
-        this.quizGame = {
-          points: 0,
-          round: 0,
-          quizId: this.quiz?.id,
-        };
-        this.updateGame().then(() => this.playAudio(this.currentQuestion));
+    if (this.quiz) {
+      this.quizGame = {
+        points: 0,
+        round: 0,
+        quizId: this.quiz.id as number,
+      };
+      this.quizGameService.createGameQuiz(this.quizGame).then(() => {
+        this.initComponent().then(() => this.playAudio(this.currentQuestion));
+      })
+    }
+  }
+
+  async updateGame(): Promise<PlayQuizComponent> {
+    return new Promise(resolve => {
+      if (this.quizGame) {
+        this.quizGameService.updateGame().then(() => {
+            this.initComponent().then(r => resolve(this));
+        })
       }
     });
   }
 
-  async updateGame() : Promise<PlayQuizComponent> {
+  private initComponent() : Promise<Answer[]> {
     return new Promise(resolve => {
       if (this.quizGame) {
-        this.quizGameService.createGameQuiz(this.quizGame).then(game => {
-          this.quizGame = game;
-          return this.quizGame;
-        }).then(game => {
-          this.quizGameService.getCurrentQuestion(game).then(question => {
-            this.currentQuestion = question;
-            return this.currentQuestion;
-          }).then(question => {
-            this.questionService.getAnswers(question).then(answers => {
-              this.currentAnswers = answers;
-              resolve(this);
-            });
-          })
-        });
+        this.quizGameService.getCurrentQuestion().then(question => {
+          this.questionService.getAnswers(question).then(r => resolve(r));
+        })
       }
-    });
+    })
   }
 
   onClickAnswer() {
     this.hasAnswered = true;
   }
 
-  private playAudio(newQuestion : Question | undefined) {
+  private playAudio(newQuestion: Question | undefined) {
     if (!newQuestion) return;
     const audio = this.questionService.getAudio(newQuestion);
     audio.load();
@@ -71,11 +81,11 @@ export class PlayQuizComponent implements OnInit {
     audio.onended = () => {
       setTimeout(() => {
         if (this.currentQuestion && this.currentAnswers) {
-          const audio = this.questionService.getAudioAnswers(this.currentQuestion,this.currentAnswers);
+          const audio = this.questionService.getAudioAnswers(this.currentQuestion);
           audio.load();
           audio.play().then(console.log);
         }
-      },2000);
+      }, 2000);
     }
   }
 
@@ -90,7 +100,7 @@ export class PlayQuizComponent implements OnInit {
   }
 
   goodAnswerFunction = () => {
-    if (this.quizGame){
+    if (this.quizGame) {
       this.quizGame.points++;
       this.hasAnswered = true;
     }

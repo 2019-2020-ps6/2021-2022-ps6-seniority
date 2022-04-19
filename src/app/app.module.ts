@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
+import {MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import { LoginComponent } from './login/login.component';
 import {MatIconModule} from "@angular/material/icon";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProfilComponent } from './profil/profil.component';
 import {MatButtonModule} from "@angular/material/button";
 import { AccueilComponent } from './accueil/accueil.component';
@@ -22,6 +22,17 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 import { QuizCircularComponent } from './quiz-circular/quiz-circular.component';
+import { QuizCreationComponent } from './quiz-creation/quiz-creation.component';
+import { QuizCreationThemeComponent } from './quiz-creation-theme/quiz-creation-theme.component';
+import {MatListModule} from "@angular/material/list";
+import { QuizCreationQuestionsComponent } from './quiz-creation-questions/quiz-creation-questions.component';
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import { ProfilCreationSeniorComponent } from './profil-creation-senior/profil-creation-senior.component';
+import {DatePipe} from "@angular/common";
+import { SeniorProfilComponent } from './senior-profil/senior-profil.component';
+import { ConfigurationEditGlaucomeComponent } from './configuration-edit-glaucome/configuration-edit-glaucome.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -33,7 +44,13 @@ import { QuizCircularComponent } from './quiz-circular/quiz-circular.component';
     AjoutSeniorComponent,
     QuizzesComponent,
     PlayQuizComponent,
-    QuizCircularComponent
+    QuizCircularComponent,
+    QuizCreationComponent,
+    QuizCreationThemeComponent,
+    QuizCreationQuestionsComponent,
+    ProfilCreationSeniorComponent,
+    SeniorProfilComponent,
+    ConfigurationEditGlaucomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +58,7 @@ import { QuizCircularComponent } from './quiz-circular/quiz-circular.component';
     BrowserAnimationsModule,
     MatOptionModule,
     MatFormFieldModule,
+    MatListModule,
     MatSelectModule,
     MatInputModule,
     MatIconModule,
@@ -49,9 +67,16 @@ import { QuizCircularComponent } from './quiz-circular/quiz-circular.component';
     MatButtonModule,
     MatGridListModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule,
+    FormsModule,
+    MatSlideToggleModule,
+    MatSliderModule
   ],
-  providers: [],
+  providers: [
+    {provide : MAT_DATE_LOCALE, useValue : 'fr-FR'},
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

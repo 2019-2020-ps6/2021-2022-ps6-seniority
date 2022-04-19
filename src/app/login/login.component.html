@@ -1,27 +1,29 @@
 <h1 class="mat-h1 custom-title">Veuillez vous connecter</h1>
 
-<div class="container">
-  <mat-form-field appearance="fill" [style.width.px]=335>
-    <mat-label>Enter your email</mat-label>
-    <input matInput placeholder="pat@example.com" [formControl]="email" required>
-    <mat-error class="error" *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-</div>
+<form [formGroup]="userForm">
+  <div class="container">
+    <mat-form-field appearance="fill" [style.width.px]=335>
+      <mat-label>Enter your email</mat-label>
+      <input matInput [formControlName]="'email'" placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error class="error" *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
 
-<div class="container">
-  <mat-form-field appearance="fill" [style.width.px]=335>
-    <mat-label>Enter your password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
+  <div class="container">
+    <mat-form-field appearance="fill" [style.width.px]=335>
+      <mat-label>Enter your password</mat-label>
+      <input [formControlName]="'password'" matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
 
-  <button mat-stroked-button color="grey" [style.width.px]=290 routerLink="/accueil">Se connecter</button>
-</div>
+    <button mat-stroked-button color="grey" (click)="login()" [style.width.px]=290 >Se connecter</button>
+  </div>
+</form>
 
 <div class="inscription">
   <a>Vous débutez sur Séniority ? </a>
-  <a routerLink="/register" class="link">  S'inscrire</a>
+  <a routerLink="/register" class="link">S'inscrire</a>
 </div>
 

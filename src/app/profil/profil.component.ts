@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../models/user.model";
 import {UserService} from "../services/user.service";
+import {Senior} from "../models/senior.model";
 
 @Component({
   selector: 'app-profil',
@@ -11,14 +12,27 @@ import {UserService} from "../services/user.service";
 export class ProfilComponent implements OnInit {
 
   public user: User | undefined;
+  public seniors : Senior[];
 
   constructor(private route: ActivatedRoute,
-              private service: UserService) {
+              private service: UserService,
+              private _router : Router) {
+    this.seniors = [];
+    this.service.user$.subscribe(next => {
+      this.user = next;
+    });
+    this.service.seniors$.subscribe(next => {
+      this.seniors = next;
+    })
   }
 
   ngOnInit(): void {
-    console.log(this.service.user);
-    this.user = this.service.user;
   }
+
+  chooseSenior(senior : Senior) {
+    this.service.changeSenior(senior);
+    this._router.navigateByUrl("/profil/senior/profil").then();
+  }
+
 }
 

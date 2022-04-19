@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="title align">
+    Création du Thème
+  </div>
+  <div class="left-subtitle align">
+    Thèmes présents
+  </div>
+  <div class="right-subtitle align">
+    Création
+  </div>
+  <div class="one align-center">
+    <div class="inner-form">
+      <mat-list *ngFor="let theme of currentThemes">
+        <mat-list-item class="item-list">{{theme.value}}</mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <div class="two align-center">
+    <div class="align full" style="margin: 0 auto">
+      <mat-form-field appearance="fill">
+        <mat-label>Nom du Thème</mat-label>
+        <input matInput [(ngModel)]="theme" placeholder="Sciences, Géographie, Histoire ..." required>
+      </mat-form-field>
+      <button style="margin-top: 25%" mat-stroked-button color="grey" (click)="addTheme()">Créer le thème</button>
+    </div>
+  </div>
+</div>
+

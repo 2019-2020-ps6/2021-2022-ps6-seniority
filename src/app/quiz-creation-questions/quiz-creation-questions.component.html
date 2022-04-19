@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="title-question-creation align-center align">
+    <h1 class="custom-title" style="font-size: 32px">Création des questions</h1>
+  </div>
+  <div class="left-question-menu-title align-center align">Liste des questions</div>
+  <div class="left-question-menu">
+    <mat-list *ngFor="let question of questions;let i = index;">
+      <mat-list-item>
+        <div class="inner-question-menu-container">
+          <div style="margin-left: 10%" class="left-inner align" [style.color]="getColorValidity(question)">
+            Question {{i+1}} {{testQuestionValidity(question) ? "" : "*"}}
+          </div>
+          <div class="middle-inner align margin-center">
+            <button [class.blue]="this.selectedQuestion === question" (click)="selectQuestion(question)" mat-icon-button aria-label="Modifier cette question">
+              <mat-icon>visibility</mat-icon>
+            </button>
+          </div>
+          <div class="right-inner align margin-center">
+            <button (click)="deleteQuestion(question)" mat-icon-button aria-label="Supprimer cette question">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="left-question-add align margin-center">
+    <button [style.width.px]="335"  (click)="addQuestion()" mat-stroked-button color="grey">Ajouter une nouvelle question</button>
+  </div>
+  <div class="right-question-choice" *ngIf="answers && selectedQuestion">
+    <div class="right-question-sub-container">
+      <div class="right-question-value-input align-center align">
+        <mat-form-field appearance="fill">
+          <mat-label>Nom de la Question</mat-label>
+          <input [(ngModel)]="this.selectedQuestion.label" matInput placeholder="Quel est le président de la république française ?" required >
+        </mat-form-field>
+      </div>
+      <div class="right-question-response-label align-center align">
+        Réponses
+      </div>
+      <div class="choice-component-container" *ngFor="let answer of this.answers;let i = index" [style.grid-row]="i + 3">
+        <div class="align align-center" [style.grid-column]="1" [style.grid-row]="1" >
+          <mat-form-field appearance="fill">
+            <mat-label>Réponse n°{{i}}</mat-label>
+            <input [(ngModel)]="answers[i].value" matInput placeholder="François Hollande" required >
+          </mat-form-field>
+        </div>
+        <div class="align-center align margin-center" [style.grid-row]="1" [style.grid-column]="2">
+          <button mat-icon-button aria-label="Bonne réponse ?" (click)="changeAnswer(i)" [style.color]="answers[i].isCorrect ? 'green' : 'red'">
+            <mat-icon>check_circle</mat-icon>
+          </button>
+        </div>
+        <div class="align-center align margin-center" [style.grid-row]="1" [style.grid-column]="3">
+          <button (click)="deleteChoice(i)" mat-icon-button aria-label="Bonne réponse ?">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="align-center margin-center align add-choice-button">
+        <button [style.width.px]="335" (click)="addNewChoice()" [disabled]="adding_disabled" mat-stroked-button color="grey">Ajouter un autre choix (4 max)</button>
+      </div>
+    </div>
+  </div>
+  <div class="register-quiz-button align align-center margin-center">
+    <button (click)="saveQuiz()" [disabled]="!canRegisterQuiz()" [style.width.px]="335" mat-stroked-button color="grey">Enregistrer le quiz</button>
+  </div>
+</div>
