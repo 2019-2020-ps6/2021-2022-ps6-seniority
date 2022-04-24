@@ -65,8 +65,8 @@
         Activer le quiz en cercle
       </mat-slide-toggle>
     </div>
-    <div class="margin-center align align-center sub-left-radius-slider">
-      Diametre
+    <div  *ngIf="configuration.config.circle_quiz" class="margin-center align align-center sub-left-radius-slider">
+      Diamètre du cercle
       <mat-slider
         [(ngModel)]="configuration.config.radius"
         thumbLabel
@@ -76,14 +76,30 @@
         aria-label="units">
       </mat-slider>
     </div>
+    <div  *ngIf="!configuration.config.circle_quiz" class="margin-center align align-center sub-left-radius-slider">
+      Taille du rectangle
+      <mat-slider
+        [(ngModel)]="configuration.config.radius"
+        thumbLabel
+        step="0.01"
+        min="0.3"
+        max="0.5"
+        aria-label="units">
+      </mat-slider>
+    </div>
+
   </div>
   <div class="preview-container" [class.full-screen-preview-container]="fullScreenPreview">
     <div class="preview-title align align-center">
       Quelle est la capitale de l'italie ?
     </div>
-    <div class="margin-center align-center align">
+    <div class="margin-center align-center align" *ngIf="configuration.config.circle_quiz">
       <app-quiz-circular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
       </app-quiz-circular>
+    </div>
+    <div class="margin-center align-center align" *ngIf="!configuration.config.circle_quiz">
+      <app-quiz-rectangular-glaucome [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
+      </app-quiz-rectangular-glaucome>
     </div>
   </div>
   <div class="margin-center align align-center save-button">

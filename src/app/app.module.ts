@@ -36,6 +36,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import { SelectSeniorPlayQuizComponent } from './select-senior-play-quiz/select-senior-play-quiz.component';
 import { ConfigurationEditDaltonismeComponent } from './configuration-edit-daltonisme/configuration-edit-daltonisme.component';
 import { QuizRectangularComponent } from './quiz-rectangular/quiz-rectangular.component';
+import { QuizRectangularGlaucomeComponent } from './quiz-rectangular-glaucome/quiz-rectangular-glaucome.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { QuizRectangularComponent } from './quiz-rectangular/quiz-rectangular.co
     SelectSeniorPlayQuizComponent,
     ConfigurationEditDaltonismeComponent,
     QuizRectangularComponent,
+    QuizRectangularGlaucomeComponent,
   ],
   imports: [
     BrowserModule,
