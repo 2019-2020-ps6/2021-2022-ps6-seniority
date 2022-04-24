@@ -20,7 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AjoutSeniorComponent } from './ajout-senior/ajout-senior.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { QuizzesComponent } from './quizzes/quizzes.component';
-import { PlayQuizComponent } from './play-quiz/play-quiz.component';
+import { PlayQuizGlaucomeComponent } from './play-quiz-glaucome/play-quiz-glaucome.component';
 import { QuizCircularComponent } from './quiz-circular/quiz-circular.component';
 import { QuizCreationComponent } from './quiz-creation/quiz-creation.component';
 import { QuizCreationThemeComponent } from './quiz-creation-theme/quiz-creation-theme.component';
@@ -33,6 +33,7 @@ import { SeniorProfilComponent } from './senior-profil/senior-profil.component';
 import { ConfigurationEditGlaucomeComponent } from './configuration-edit-glaucome/configuration-edit-glaucome.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSliderModule} from "@angular/material/slider";
+import { SelectSeniorPlayQuizComponent } from './select-senior-play-quiz/select-senior-play-quiz.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import {MatSliderModule} from "@angular/material/slider";
     AccueilComponent,
     AjoutSeniorComponent,
     QuizzesComponent,
-    PlayQuizComponent,
+    PlayQuizGlaucomeComponent,
     QuizCircularComponent,
     QuizCreationComponent,
     QuizCreationThemeComponent,
@@ -51,6 +52,7 @@ import {MatSliderModule} from "@angular/material/slider";
     ProfilCreationSeniorComponent,
     SeniorProfilComponent,
     ConfigurationEditGlaucomeComponent,
+    SelectSeniorPlayQuizComponent,
   ],
   imports: [
     BrowserModule,

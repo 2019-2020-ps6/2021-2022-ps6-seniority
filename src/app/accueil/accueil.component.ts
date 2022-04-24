@@ -22,7 +22,7 @@ export class AccueilComponent implements OnInit {
 
   playQuiz(quiz : Quiz) {
     this.gameQuizService.quiz$.next(quiz);
-    this._router.navigateByUrl(`/quiz/play`).then(console.log);
+    this._router.navigateByUrl(`/quiz/play/selection`).then(console.log);
   }
 
 }

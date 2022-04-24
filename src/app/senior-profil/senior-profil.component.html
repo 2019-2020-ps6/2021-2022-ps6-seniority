@@ -24,9 +24,9 @@
       <div class="align align-center sub-left-bottom-title">
         Configurations
       </div>
-      <div class="sub-left-bottom-container margin-center">
-        <mat-list *ngFor="let config of handicapsConfig">
-          <mat-list-item class="item-list info">
+      <div class="sub-left-bottom-container margin-center" *ngIf="selectedConfig">
+        <mat-list *ngFor="let config of handicapsConfig" >
+          <mat-list-item class="item-list info" [class.green]="selectedConfig.id === config.id">
             <div class="inner-list-container">
               <div class="align align-center left-inner-list">
                 {{config.name}}

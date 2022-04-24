@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../services/user.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {default_handicap_from_string} from "../models/handicap.model";
 import {Senior} from "../models/senior.model";
 import {Router} from "@angular/router";
-import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-profil-creation-senior',

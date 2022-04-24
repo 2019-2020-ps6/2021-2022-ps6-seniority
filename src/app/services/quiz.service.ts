@@ -48,7 +48,6 @@ export class QuizService {
   updateQuizToAdd(quiz: Quiz) {
     this.quizToAdd.quiz = Object.fromEntries(Object.entries(quiz).filter(([_, v]) => v !== "")) as Quiz;
     this.quizToAdd$.next(this.quizToAdd);
-    console.log(this.quizToAdd);
   }
 
   addAnswer(question: Question | undefined, answer: Answer) {

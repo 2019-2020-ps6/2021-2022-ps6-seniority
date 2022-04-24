@@ -4,6 +4,7 @@ import {QuizGame} from "../models/quiz.game.model";
 import {Question} from "../models/question.model";
 import {Quiz} from "../models/quiz.model";
 import {BehaviorSubject} from "rxjs";
+import {Handicap} from "../models/handicap.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,12 @@ export class QuizGameService {
   private gameQuiz ?: QuizGame;
   private currentQuestion ?: Question;
   private quiz ?: Quiz;
+  currentConfig ?: Handicap<any>;
 
   public gameQuiz$: BehaviorSubject<QuizGame | undefined> = new BehaviorSubject<QuizGame | undefined>(this.gameQuiz);
   public question$: BehaviorSubject<Question | undefined> = new BehaviorSubject<Question | undefined>(this.currentQuestion);
   public quiz$ : BehaviorSubject<Quiz | undefined> = new BehaviorSubject<Quiz | undefined>(this.quiz);
+  public currentConfig$ : BehaviorSubject<Handicap<any> | undefined> = new BehaviorSubject<Handicap<any> | undefined>(this.currentConfig);
 
   constructor(private http : HttpClient) {
   }
@@ -41,6 +44,11 @@ export class QuizGameService {
         resolve(this.currentQuestion);
       })
     })
+  }
+
+  updateCurrentConfig(config : Handicap<any>) {
+    this.currentConfig = config;
+    this.currentConfig$.next(this.currentConfig);
   }
 
   async updateGame() : Promise<QuizGame> {

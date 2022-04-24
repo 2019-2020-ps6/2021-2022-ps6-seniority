@@ -1,0 +1,12 @@
+<div class="container" *ngIf="quiz && quizGame && config">
+  <div class="align align-center margin-center custom-title" >{{quiz?.name}}</div>
+  <div class="align-center align margin-center">
+    <p *ngIf="currentQuestion"><span *ngIf="quizGame">Question n°{{quizGame.round + 1}} : </span>{{currentQuestion.label}}</p>
+  </div>
+  <div class="align-center align margin-center">
+    <app-quiz-circular [percentWidth]="config.radius" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [choices]="currentAnswers" [showResult]="hasAnswered"></app-quiz-circular>
+  </div>
+  <div class="align-center align margin-center">
+    <button mat-stroked-button color="grey" [disabled]="!hasAnswered" (click)="nextQuestion()">Question suivante</button>
+  </div>
+</div>

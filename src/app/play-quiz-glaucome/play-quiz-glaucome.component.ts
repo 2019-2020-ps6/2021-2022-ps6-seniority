@@ -7,21 +7,25 @@ import {QuizGameService} from "../services/quiz.game.service";
 import {Question} from "../models/question.model";
 import {QuestionService} from "../services/question.service";
 import {Answer} from "../models/answer.model";
+import {UserService} from "../services/user.service";
+import {GlaucomeConfiguration} from "../models/handicap.model";
+import {config} from "rxjs";
 
 @Component({
-  selector: 'app-play-quiz',
-  templateUrl: './play-quiz.component.html',
-  styleUrls: ['./play-quiz.component.css']
+  selector: 'app-play-quiz-glaucome',
+  templateUrl: './play-quiz-glaucome.component.html',
+  styleUrls: ['./play-quiz-glaucome.component.css']
 })
-export class PlayQuizComponent implements OnInit {
+export class PlayQuizGlaucomeComponent implements OnInit {
 
   quiz ?: Quiz;
   quizGame ?: QuizGame;
   currentQuestion ?: Question;
   currentAnswers: Answer[] = [];
   hasAnswered ?: boolean;
+  config ?: GlaucomeConfiguration;
 
-  constructor(private quizService: QuizService, private quizGameService: QuizGameService, private questionService: QuestionService, private route: ActivatedRoute, private _router: Router) {
+  constructor(private quizService: QuizService, private quizGameService: QuizGameService, private questionService: QuestionService, private route: ActivatedRoute, private userService : UserService, private _router: Router) {
     this.quizGameService.gameQuiz$.subscribe(game => {
       this.quizGame = game;
     });
@@ -34,6 +38,9 @@ export class PlayQuizComponent implements OnInit {
     this.quizGameService.quiz$.subscribe(quiz => {
       this.quiz = quiz;
     })
+    this.quizGameService.currentConfig$.subscribe(next => {
+      this.config = next?.config;
+    });
   }
 
   ngOnInit(): void {
@@ -49,7 +56,7 @@ export class PlayQuizComponent implements OnInit {
     }
   }
 
-  async updateGame(): Promise<PlayQuizComponent> {
+  async updateGame(): Promise<PlayQuizGlaucomeComponent> {
     return new Promise(resolve => {
       if (this.quizGame) {
         this.quizGameService.updateGame().then(() => {
@@ -74,7 +81,7 @@ export class PlayQuizComponent implements OnInit {
   }
 
   private playAudio(newQuestion: Question | undefined) {
-    if (!newQuestion) return;
+    if (!newQuestion || !this.config || !this.config?.activate_voice) return;
     const audio = this.questionService.getAudio(newQuestion);
     audio.load();
     audio.play().then(console.log);

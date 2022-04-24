@@ -14,6 +14,7 @@ export class SeniorProfilComponent implements OnInit {
   senior ?: Senior;
   handicapName : string = "";
   handicapsConfig ?: Handicap<any>[];
+  selectedConfig ?: Handicap<any>;
 
   constructor(private userService : UserService,private _router : Router) {
     this.userService.senior$.subscribe(next => {
@@ -24,7 +25,9 @@ export class SeniorProfilComponent implements OnInit {
       this.handicapsConfig = next;
       this.handicapName = this.userService.getHandicapName();
     });
-
+    this.userService.userSelectedConfig$.subscribe(next => {
+      this.selectedConfig = next.get(this.senior?.id);
+    });
   }
 
   ngOnInit(): void {

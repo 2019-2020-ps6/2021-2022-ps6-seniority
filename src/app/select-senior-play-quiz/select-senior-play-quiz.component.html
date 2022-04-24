@@ -1,0 +1,30 @@
+<div class="container" *ngIf="quiz" >
+  <div class="icon align-center align margin-center">
+    <button mat-icon-button>
+      <div style="font-size: 42px">
+        <mat-icon [inline]="true">home</mat-icon>
+      </div>
+    </button>
+  </div>
+  <div class="align align-center title">
+    {{quiz.name}}
+  </div>
+  <div class="sub-container">
+    <div class="align align-center margin-center sub-title">
+      Qui fait le quiz ?
+    </div>
+    <div class="align-center align margin-center">
+      <mat-form-field [style.width.px]=335 appearance="fill">
+        <mat-label>Sélectionner un accueilli</mat-label>
+        <mat-select [(ngModel)]="selectedId">
+          <mat-option *ngFor="let senior of seniors" [value]="senior.id">
+            {{senior.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="align align-center margin-center">
+      <button (click)="launch()" mat-stroked-button color="grey" [style.width.px]="300" >Lancer le quiz</button>
+    </div>
+  </div>
+</div>

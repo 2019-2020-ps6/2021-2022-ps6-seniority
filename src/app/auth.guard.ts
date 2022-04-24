@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate{
       this.snackBar.open('Impossible il faut être connecté !','OK désolé', {
         duration : 1500
       });
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/login').then();
     }
     return true;
   }
