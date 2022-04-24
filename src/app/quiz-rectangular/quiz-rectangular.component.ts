@@ -12,8 +12,8 @@ export class QuizRectangularComponent implements OnInit {
   @Input() percentWidth : number = 0.5;
   @Input() choices : Answer[] = [];
   @Input() showResult ?: boolean;
-  @Input() falseColor : string = "grey";
-  @Input() trueColor : string = "blue";
+  @Input() falseColor : string = "red";
+  @Input() trueColor : string = "green";
   @Input() goodAnswerCallback ?: () => void;
   @Input() falseAnswerCallback ?: () => void;
 

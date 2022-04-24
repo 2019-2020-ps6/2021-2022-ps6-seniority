@@ -98,8 +98,8 @@
       </app-quiz-circular>
     </div>
     <div class="margin-center align-center align" *ngIf="!configuration.config.circle_quiz">
-      <app-quiz-rectangular-glaucome [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
-      </app-quiz-rectangular-glaucome>
+      <app-quiz-rectangular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
+      </app-quiz-rectangular>
     </div>
   </div>
   <div class="margin-center align align-center save-button">

@@ -15,6 +15,7 @@ export class QuizCircularComponent implements OnInit {
   @Input() trueColor : string = "green";
   @Input() goodAnswerCallback ?: () => void;
   @Input() falseAnswerCallback ?: () => void;
+  @Input() circle : boolean = true;
 
   constructor() {
   }

@@ -1,7 +1,6 @@
 .rectangle{
   border : 2px solid black;
   overflow: hidden;
-  margin-bottom: 200px;
 }
 
 .container {
