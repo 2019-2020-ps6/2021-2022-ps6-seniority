@@ -57,6 +57,29 @@
         Activer la lecture à haute <br> voix des questions/réponses
       </mat-slide-toggle>
     </div>
+    <div class="margin-center align sub-left-boldAnswers">
+      <mat-slide-toggle
+        class="align-center margin"
+        [(ngModel)]="configuration.config.boldAnswers">
+        Réponses en gras
+      </mat-slide-toggle>
+    </div>
+    <div class="margin-center align align-center sub-left-radius-slider">
+      Taille de la police
+      <mat-slider
+        [(ngModel)]="configuration.config.fontSize"
+        thumbLabel
+        step="1"
+        min="16"
+        max="40"
+        aria-label="units">
+      </mat-slider>
+    </div>
+    <div>
+      <label class="align-center" for="head3">Couleur écriture des réponses</label>
+      <input class="margin-center align" type="color" id="head3" name="head" [(ngModel)]="configuration.config.textColor"
+             value="#e66465">
+    </div>
     <div>
       <label class="align-center" for="head1">Couleur bonne réponse</label>
       <input class="margin-center align" type="color" id="head1" name="head" [(ngModel)]="configuration.config.trueColor"
@@ -73,7 +96,10 @@
       Quelle est la capitale de l'italie ?
     </div>
     <div class="margin-center align-center align">
-      <app-quiz-rectangular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [falseColor]="configuration.config.falseColor" [trueColor]="configuration.config.trueColor" [choices]="falseChoices">
+      <app-quiz-rectangular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction"
+                            [goodAnswerCallback]="goodAnswerFunction" [falseColor]="configuration.config.falseColor"
+                            [boldAnswers]="configuration.config.boldAnswers" [fontSize]="configuration.config.fontSize"
+                            [trueColor]="configuration.config.trueColor" [textColor]="configuration.config.textColor" [choices]="falseChoices">
       </app-quiz-rectangular>
     </div>
   </div>

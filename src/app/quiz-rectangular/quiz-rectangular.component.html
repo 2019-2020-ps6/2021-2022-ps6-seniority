@@ -1,4 +1,5 @@
-<div class="rectangle container" [ngStyle]="{'width' : with,'height' : height}">
+<div class="rectangle container" [ngStyle]="{'width' : with,'height' : height, 'color': textColorReturn(),
+'font-weight': boldAnswersReturn(boldAnswers), 'font-size': fontSizeReturn()}">
   <div class="one align text" (click)="clickOnTile(choices[0])" [ngStyle]="showResult && choices[0] ? {'background' : correctColor(choices[0])} : {}">
     <span>{{choices[0] ? choices[0].value : ""}}</span>
   </div>

@@ -12,8 +12,11 @@ export class QuizRectangularComponent implements OnInit {
   @Input() percentWidth : number = 0.5;
   @Input() choices : Answer[] = [];
   @Input() showResult ?: boolean;
+  @Input() textColor : string = "black";
   @Input() falseColor : string = "red";
   @Input() trueColor : string = "green";
+  @Input() boldAnswers : boolean = true;
+  @Input() fontSize : number = 32;
   @Input() goodAnswerCallback ?: () => void;
   @Input() falseAnswerCallback ?: () => void;
 
@@ -29,6 +32,18 @@ export class QuizRectangularComponent implements OnInit {
 
   get height() {
     return `${window.innerHeight * this.percentWidth}px`;
+  }
+
+  fontSizeReturn() {
+    return `${this.fontSize}px`;
+  }
+
+  boldAnswersReturn(boldAnswers : boolean) {
+    return boldAnswers ? "bold" : "normal";
+  }
+
+  textColorReturn() {
+    return this.textColor;
   }
 
   correctColor(answer : Answer) {

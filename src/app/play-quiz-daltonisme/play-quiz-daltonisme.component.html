@@ -4,8 +4,11 @@
     <p *ngIf="currentQuestion"><span *ngIf="quizGame">Question n°{{quizGame.round + 1}} : </span>{{currentQuestion.label}}</p>
   </div>
   <div class="align-center align margin-center">
-    <app-quiz-circular *ngIf="config.circle_quiz" [percentWidth]="config.radius" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [choices]="currentAnswers" [showResult]="hasAnswered"></app-quiz-circular>
-    <app-quiz-rectangular *ngIf="!config.circle_quiz" [percentWidth]="config.radius" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [choices]="currentAnswers" [showResult]="hasAnswered"></app-quiz-rectangular>
+    <app-quiz-rectangular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction"
+                          [goodAnswerCallback]="goodAnswerFunction" [falseColor]="config.falseColor"
+                          [boldAnswers]="config.boldAnswers" [fontSize]="config.fontSize"
+                          [trueColor]="config.trueColor" [textColor]="config.textColor" [choices]="currentAnswers">
+    </app-quiz-rectangular>
   </div>
   <div class="align-center align margin-center" *ngIf="hasAnswered">
     <button mat-stroked-button color="grey" [disabled]="!hasAnswered" (click)="nextQuestion()">Question suivante</button>

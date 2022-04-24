@@ -15,6 +15,7 @@ import {SeniorProfilComponent} from "./senior-profil/senior-profil.component";
 import {ConfigurationEditGlaucomeComponent} from "./configuration-edit-glaucome/configuration-edit-glaucome.component";
 import {SelectSeniorPlayQuizComponent} from "./select-senior-play-quiz/select-senior-play-quiz.component";
 import {ConfigurationEditDaltonismeComponent} from "./configuration-edit-daltonisme/configuration-edit-daltonisme.component";
+import {PlayQuizDaltonismeComponent} from "./play-quiz-daltonisme/play-quiz-daltonisme.component";
 
 const routes: Routes = [
   {path : '', redirectTo : '/login', pathMatch : 'full'},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path : 'accueil', component : AccueilComponent, canActivate : [AuthGuard]},
   {path : 'ajoutsenior', component : AjoutSeniorComponent, canActivate : [AuthGuard]},
   {path : 'quiz/play/glaucome', component : PlayQuizGlaucomeComponent, canActivate : [AuthGuard]},
+  {path : 'quiz/play/daltonisme', component : PlayQuizDaltonismeComponent, canActivate : [AuthGuard]},
   {path : 'quiz/creation', component: QuizCreationComponent, canActivate : [AuthGuard]},
   {path : 'quiz/creation/theme' , component : QuizCreationThemeComponent, canActivate : [AuthGuard]},
   {path : 'quiz/creation/questions' , component : QuizCreationQuestionsComponent, canActivate : [AuthGuard]},

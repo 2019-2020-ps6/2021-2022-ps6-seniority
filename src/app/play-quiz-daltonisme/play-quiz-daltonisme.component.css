@@ -1,0 +1,60 @@
+.custom-title {
+  color: black;
+  margin: 1% 0 1% 0;
+  text-align: center;
+  font-size: 46px;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 4fr 1fr;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.internalMatGrid{
+  min-width:60%;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.internalMatGrid mat-grid-tile {
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  font-size: 26px;
+}
+
+.icon {
+  font-size: 36px;
+}
+
+.internalMatGrid mat-grid-tile:hover{
+  cursor : pointer;
+}
+
+.correct {
+  background: green;
+}
+
+.false {
+  background: red;
+}
+
+.margin-center{
+  margin : 0 auto;
+}
+
+.align-center {
+  text-align: center;
+}
+
+
+.align {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
