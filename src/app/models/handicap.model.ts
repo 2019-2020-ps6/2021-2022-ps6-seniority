@@ -22,7 +22,20 @@ export class GlaucomeConfiguration implements Configuration {
   }
 }
 
-const CONFIGURATION_CLASSES = [GlaucomeConfiguration];
+export class DaltonismeConfiguration implements Configuration {
+  type = "Daltonisme";
+  trueColor: string;
+  falseColor: string;
+  activate_voice: boolean;
+
+  constructor() {
+    this.activate_voice = true;
+    this.trueColor = "blue";
+    this.falseColor = "grey";
+  }
+}
+
+const CONFIGURATION_CLASSES = [GlaucomeConfiguration, DaltonismeConfiguration];
 
 export function default_handicap_from_string(str: string): Configuration {
   return new (CONFIGURATION_CLASSES.filter(c => c.name.startsWith(str))[0])();

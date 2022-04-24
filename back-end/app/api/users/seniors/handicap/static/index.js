@@ -4,6 +4,7 @@ const router = new Router();
 
 const handicaps = [
   "Glaucome",
+  "Daltonisme",
 ]
 
 router.get('/',(req, res) => {

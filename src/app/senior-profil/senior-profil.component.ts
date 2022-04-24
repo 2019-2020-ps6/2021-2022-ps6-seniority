@@ -16,7 +16,7 @@ export class SeniorProfilComponent implements OnInit {
   handicapsConfig ?: Handicap<any>[];
   selectedConfig ?: Handicap<any>;
 
-  constructor(private userService : UserService,private _router : Router) {
+  constructor(private userService : UserService, private _router : Router) {
     this.userService.senior$.subscribe(next => {
       this.senior = next;
       this.userService.getAllHandicapsConfigs().then();

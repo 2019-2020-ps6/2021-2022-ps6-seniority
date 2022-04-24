@@ -34,6 +34,8 @@ import { ConfigurationEditGlaucomeComponent } from './configuration-edit-glaucom
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatSliderModule} from "@angular/material/slider";
 import { SelectSeniorPlayQuizComponent } from './select-senior-play-quiz/select-senior-play-quiz.component';
+import { ConfigurationEditDaltonismeComponent } from './configuration-edit-daltonisme/configuration-edit-daltonisme.component';
+import { QuizRectangularComponent } from './quiz-rectangular/quiz-rectangular.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { SelectSeniorPlayQuizComponent } from './select-senior-play-quiz/select-
     SeniorProfilComponent,
     ConfigurationEditGlaucomeComponent,
     SelectSeniorPlayQuizComponent,
+    ConfigurationEditDaltonismeComponent,
+    QuizRectangularComponent,
   ],
   imports: [
     BrowserModule,

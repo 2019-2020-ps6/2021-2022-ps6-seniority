@@ -1,0 +1,153 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr 3fr 0.4fr;
+  grid-template-rows: 1fr 8fr 1fr;
+  width: 99.9%;
+  height: 100%;
+}
+
+.eye-icon {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.restart-icon {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.align {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.margin-center {
+  margin : 0 auto;
+}
+
+.left-title {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.right-title {
+  grid-column: 2/5;
+  grid-row: 1;
+}
+
+.border-right {
+  grid-column: 1;
+  grid-row: 1/4;
+  width: 100%;
+  height: 100%;
+  border-right : 1px solid black;
+}
+
+.border-left {
+  grid-column: 2;
+  grid-row: 1/4;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid black;
+}
+
+.title {
+  font-size: 28px;
+}
+
+.left-config {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-row: 2;
+  grid-column: 1;
+  grid-template-rows: repeat(5,1fr);
+  grid-template-columns: 1fr;
+}
+
+.sub-left-title {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 20px;
+}
+
+.margin-center{
+  margin : 0 auto;
+}
+
+.sub-left-name-input {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.sub-left-voice-activate{
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.sub-left-circle-activate{
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.sub-left-radius-slider{
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.preview-container {
+  grid-column: 2/5;
+  grid-row: 2/4;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 5fr;
+}
+
+.preview-title{
+  grid-row: 1;
+  grid-column: 1;
+  font-size: 22px;
+}
+
+.align-center{
+  text-align: center;
+}
+
+/deep/ .mat-slide-toggle-content {
+  margin-left: 15px;
+}
+
+mat-slider{
+  width: 240px;
+}
+
+.full-screen-preview-container {
+  background: white;
+  z-index: 2;
+  grid-column: 1/5 !important;
+}
+
+.save-button {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+.full-screen-preview-title {
+  background: white;
+  grid-row: 1;
+  grid-column: 1/5 !important;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr;
+}
