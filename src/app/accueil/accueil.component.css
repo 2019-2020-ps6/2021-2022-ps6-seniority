@@ -10,12 +10,10 @@
 }
 
 .internalMatGrid mat-grid-tile {
-  border-bottom: 2px solid black;
-  border-right: 2px solid black;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+  background: whitesmoke;
   font-size: 26px;
-
+  box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
+  border-radius: 7px;
 }
 
 .icon {

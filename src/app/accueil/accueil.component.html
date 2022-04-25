@@ -3,7 +3,7 @@
     <mat-icon  aria-hidden="false" aria-label="Accueil" class="icon">home</mat-icon>
   </mat-grid-tile>
   <mat-grid-tile rowspan="3" colspan="5">
-    <h1 class="mat-h1 custom-title">Seniority</h1>
+    <img  height="100" class="mat-h1 custom-title" src="../../assets/logo.png">
   </mat-grid-tile>
   <mat-grid-tile rowspan="3">
     <mat-icon aria-hidden="false" aria-label="Account" routerLink="/profil" class="icon">account_circle</mat-icon>
@@ -11,7 +11,7 @@
   <mat-grid-tile colspan="7" rowspan="15">
     <div class='internalMatGrid' >
       <mat-grid-list gutterSize="15px" cols="2" rowHeight="4:1">
-        <mat-grid-tile *ngFor="let quiz of quizzes" (click)="playQuiz(quiz)">
+        <mat-grid-tile *ngFor="let quiz of first_quizzes;let i = index;" (click)="playQuiz(quiz)">
           {{quiz.name}}
         </mat-grid-tile>
       </mat-grid-list>

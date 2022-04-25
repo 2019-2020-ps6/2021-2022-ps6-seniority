@@ -25,4 +25,8 @@ export class AccueilComponent implements OnInit {
     this._router.navigateByUrl(`/quiz/play/selection`).then(console.log);
   }
 
+  get first_quizzes() {
+    return this.quizzes?.slice(0,4);
+  }
+
 }
