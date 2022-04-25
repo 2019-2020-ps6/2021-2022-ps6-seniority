@@ -3,7 +3,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: black;
+  font-weight: bold;
+}
 
+.image {
+  display: flex;
+  margin: 4% auto -60px;
 }
 
 .inscription {
@@ -11,16 +17,20 @@
   justify-content: center;
   align-items: center;
   margin-top : 6px;
+  color: black;
+  font-weight: bold;
 }
 
 .link {
   font-weight: bold;
   margin-left : 6px;
+  color: hotpink;
 }
 
 .custom-title {
-  color: black;
-  margin: 10% 0 1% 0;
+  font-weight: bold;
+  color: hotpink;
+  margin: 5% 0 1% 0;
   text-align: center;
   font-style: italic;
 }
