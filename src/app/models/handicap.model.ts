@@ -28,17 +28,17 @@ export class DaltonismeConfiguration implements Configuration {
   type = "Daltonisme";
   trueColor: string;
   falseColor: string;
-  textColor: string;
   boldAnswers: boolean;
   fontSize: number;
+  darkColor : boolean;
   activate_voice: boolean;
 
   constructor() {
     this.activate_voice = true;
     this.trueColor = "lightblue";
     this.falseColor = "grey";
-    this.textColor = "black";
     this.boldAnswers = true;
+    this.darkColor = false;
     this.fontSize = 16;
   }
 }

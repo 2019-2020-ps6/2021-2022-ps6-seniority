@@ -14,6 +14,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class ConfigurationEditDaltonismeComponent implements OnInit {
 
   senior ?: Senior;
+
   configuration ?: Handicap<DaltonismeConfiguration>;
   falseChoices : Answer[] = [
     {

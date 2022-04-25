@@ -76,11 +76,6 @@
       </mat-slider>
     </div>
     <div>
-      <label class="margin-center align align-center" for="head3">Couleur écriture des réponses</label>
-      <input class="margin-center align" type="color" id="head3" name="head" [(ngModel)]="configuration.config.textColor"
-             value="#e66465">
-    </div>
-    <div>
       <label class="margin-center align align-center" for="head1">Couleur bonne réponse</label>
       <input class="margin-center align" type="color" id="head1" name="head" [(ngModel)]="configuration.config.trueColor"
              value="#e66465">
@@ -89,6 +84,9 @@
       <label class="margin-center align align-center" for="head2">Couleur mauvaise réponse</label>
       <input class="margin-center align" type="color" id="head2" name="head" [(ngModel)]="configuration.config.falseColor"
              value="#e66465">
+    </div>
+    <div>
+      <mat-checkbox class="margin-center align" [(ngModel)]="configuration.config.darkColor">couleur foncées</mat-checkbox>
     </div>
   </div>
   <div class="preview-container" [class.full-screen-preview-container]="fullScreenPreview">
@@ -99,7 +97,7 @@
       <app-quiz-rectangular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction"
                             [goodAnswerCallback]="goodAnswerFunction" [falseColor]="configuration.config.falseColor"
                             [boldAnswers]="configuration.config.boldAnswers" [fontSize]="configuration.config.fontSize"
-                            [trueColor]="configuration.config.trueColor" [textColor]="configuration.config.textColor" [choices]="falseChoices">
+                            [trueColor]="configuration.config.trueColor" [darkColor]="configuration.config.darkColor" [choices]="falseChoices">
       </app-quiz-rectangular>
     </div>
   </div>

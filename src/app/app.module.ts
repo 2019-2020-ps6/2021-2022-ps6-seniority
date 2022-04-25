@@ -37,6 +37,7 @@ import { SelectSeniorPlayQuizComponent } from './select-senior-play-quiz/select-
 import { ConfigurationEditDaltonismeComponent } from './configuration-edit-daltonisme/configuration-edit-daltonisme.component';
 import { QuizRectangularComponent } from './quiz-rectangular/quiz-rectangular.component';
 import { PlayQuizDaltonismeComponent } from './play-quiz-daltonisme/play-quiz-daltonisme.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { PlayQuizDaltonismeComponent } from './play-quiz-daltonisme/play-quiz-da
     MatSnackBarModule,
     FormsModule,
     MatSlideToggleModule,
-    MatSliderModule
+    MatSliderModule,
+    MatCheckboxModule
   ],
   providers: [
     {provide : MAT_DATE_LOCALE, useValue : 'fr-FR'},

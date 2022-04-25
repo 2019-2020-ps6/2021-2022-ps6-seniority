@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Answer} from "../models/answer.model";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-quiz-rectangular',
@@ -7,8 +8,8 @@ import {Answer} from "../models/answer.model";
   styleUrls: ['./quiz-rectangular.component.css']
 })
 
-export class QuizRectangularComponent implements OnInit {
-
+export class QuizRectangularComponent implements OnInit, OnChanges {
+  @Input() darkColor : boolean = false;
   @Input() percentWidth : number = 0.6;
   @Input() choices : Answer[] = [];
   @Input() showResult ?: boolean;
@@ -20,10 +21,15 @@ export class QuizRectangularComponent implements OnInit {
   @Input() goodAnswerCallback ?: () => void;
   @Input() falseAnswerCallback ?: () => void;
 
-  constructor() {
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['showResult'])
+    {
+      if(!this.showResult)
+        this.textColor = "black";
+    }
   }
 
   get with() {
@@ -59,6 +65,9 @@ export class QuizRectangularComponent implements OnInit {
   }
 
   clickOnTile(answer : Answer) {
+    if(this.darkColor){
+      this.textColor = "white";
+    }
     if (answer.isCorrect)
       this.invokeGoodAnswerCallback();
     else
