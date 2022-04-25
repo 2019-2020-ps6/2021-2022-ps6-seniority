@@ -18,7 +18,6 @@ export class QuizCreationQuestionsComponent implements OnInit {
   constructor(private quizService: QuizService,private _router : Router,private snackBar : MatSnackBar) {
     this.answers = [];
     this.quizService.quizToAdd$.subscribe(next => {
-      console.log(quizService.getQuizToAdd())
       if (this.selectedQuestion && next.questions.has(this.selectedQuestion)) {
         this.answers = next.questions.get(this.selectedQuestion);
       }
@@ -26,6 +25,8 @@ export class QuizCreationQuestionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!(!!this.questions.length))
+      this.addQuestion();
   }
 
   addNewChoice() {

@@ -77,20 +77,20 @@
     </div>
     <div>
       <label class="margin-center align align-center" for="head1">Couleur bonne réponse</label>
-      <input class="margin-center align" type="color" id="head1" name="head" [(ngModel)]="configuration.config.trueColor"
+      <input class="margin-center align" type="color" id="head1" name="head" style="margin-top: 4px" [(ngModel)]="configuration.config.trueColor"
              value="#e66465">
     </div>
     <div>
       <label class="margin-center align align-center" for="head2">Couleur mauvaise réponse</label>
-      <input class="margin-center align" type="color" id="head2" name="head" [(ngModel)]="configuration.config.falseColor"
+      <input class="margin-center align" type="color" id="head2" name="head" style="margin-top: 4px" [(ngModel)]="configuration.config.falseColor"
              value="#e66465">
     </div>
-    <div>
-      <mat-checkbox class="margin-center align" [(ngModel)]="configuration.config.darkColor">couleur foncées</mat-checkbox>
+    <div class="margin-center align align-center">
+      <mat-checkbox [(ngModel)]="configuration.config.darkColor">Couleur foncées</mat-checkbox>
     </div>
   </div>
   <div class="preview-container" [class.full-screen-preview-container]="fullScreenPreview">
-    <div class="preview-title align align-center">
+    <div class="preview-title align align-center question-font">
       Quelle est la capitale de l'italie ?
     </div>
     <div class="margin-center align-center align">

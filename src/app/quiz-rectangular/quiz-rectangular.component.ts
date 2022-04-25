@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {Answer} from "../models/answer.model";
 import {BehaviorSubject} from "rxjs";
 
@@ -8,9 +8,10 @@ import {BehaviorSubject} from "rxjs";
   styleUrls: ['./quiz-rectangular.component.css']
 })
 
-export class QuizRectangularComponent implements OnInit, OnChanges {
+export class QuizRectangularComponent implements OnInit, OnChanges, OnDestroy {
   @Input() darkColor : boolean = false;
   @Input() percentWidth : number = 0.6;
+  @Input() percentHeight : number = 0.5;
   @Input() choices : Answer[] = [];
   @Input() showResult ?: boolean;
   @Input() textColor : string = "black";
@@ -20,8 +21,20 @@ export class QuizRectangularComponent implements OnInit, OnChanges {
   @Input() fontSize : number = 32;
   @Input() goodAnswerCallback ?: () => void;
   @Input() falseAnswerCallback ?: () => void;
+  width_ : number = window.innerWidth;
+  height_: number = window.innerHeight;
 
   ngOnInit(): void {
+    window.addEventListener('resize',this.resize);
+  }
+
+  ngOnDestroy() : void {
+    window.removeEventListener('resize',this.resize);
+  }
+
+  resize = (ev : Event) => {
+    this.width_ = window.innerWidth;
+    this.height_ = window.innerHeight;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -32,12 +45,12 @@ export class QuizRectangularComponent implements OnInit, OnChanges {
     }
   }
 
-  get with() {
-    return `${window.innerWidth * this.percentWidth}px`;
+  get width() {
+    return `${this.width_ * this.percentWidth}px`;
   }
 
   get height() {
-    return `${window.innerHeight * this.percentWidth}px`;
+    return `${this.height_ * this.percentHeight}px`;
   }
 
   fontSizeReturn() {

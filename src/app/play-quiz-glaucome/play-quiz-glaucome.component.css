@@ -5,6 +5,10 @@
   font-size: 46px;
 }
 
+.question-font {
+  font-size: 22px;
+}
+
 .container {
   display: grid;
   grid-template-rows: 1fr 1fr 4fr 1fr;

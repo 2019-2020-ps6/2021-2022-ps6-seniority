@@ -100,7 +100,16 @@ export class QuizService {
             });
           }));
         });
-        Promise.all(firstPromises).then(() => resolve(true));
+        Promise.all(firstPromises).then(() => {
+          resolve(true);
+          this.quizToAdd = {
+            questions: new Map<Question, Answer[]>(),
+            quiz: {
+              name : "",
+              theme : ""
+            }
+          }
+        });
       });
     });
   }

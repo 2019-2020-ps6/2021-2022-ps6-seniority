@@ -1,14 +1,14 @@
 <div class="container" [class.circle]="circle" [ngStyle]="{'width' : diameterStr,'height' : diameterStr, 'font-size': fontSizeReturn()}">
-  <div class="one align text" (click)="clickOnTile(choices[0])" [ngStyle]="showResult && choices[0] ? {'background' : correctColor(choices[0])} : {}">
-    <span>{{choices[0] ? choices[0].value : ""}}</span>
+  <div [class.select]="selections[0] && !showResult" class="one align text" (click)="clickOnTile(choices[0])" [ngStyle]="showResult && choices[0] ? {'background' : correctColor(choices[0])} : {}">
+    <span class="adjust">{{choices[0] ? choices[0].value : ""}}</span>
   </div>
-  <div class="two align text" (click)="clickOnTile(choices[1])" [ngStyle]="showResult && choices[1] ? {'background' : correctColor(choices[1])} : {}">
-    {{choices[1] ? choices[1].value : "" }}
+  <div [class.select]="selections[1] && !showResult" class="two align text" (click)="clickOnTile(choices[1])" [ngStyle]="showResult && choices[1] ? {'background' : correctColor(choices[1])} : {}">
+    <span class="adjust">{{choices[1] ? choices[1].value : "" }}</span>
   </div>
-  <div class="three align text" (click)="clickOnTile(choices[2])" [ngStyle]="showResult && choices[2] ? {'background' : correctColor(choices[2])} : {}">
-    {{choices[2] ? choices[2].value : ""}}
+  <div [class.select]="selections[2] && !showResult" class="three align text" (click)="clickOnTile(choices[2])" [ngStyle]="showResult && choices[2] ? {'background' : correctColor(choices[2])} : {}">
+    <span class="adjust">{{choices[2] ? choices[2].value : ""}}</span>
   </div>
-  <div class="four align text" (click)="clickOnTile(choices[3])" [ngStyle]="showResult && choices[3] ? {'background' : correctColor(choices[3])} : {}">
-    {{choices[3] ? choices[3].value : ""}}
+  <div [class.select]="selections[3] && !showResult" class="four align text" (click)="clickOnTile(choices[3])" [ngStyle]="showResult && choices[3] ? {'background' : correctColor(choices[3])} : {}">
+    <span class="adjust">{{choices[3] ? choices[3].value : ""}}</span>
   </div>
 </div>
