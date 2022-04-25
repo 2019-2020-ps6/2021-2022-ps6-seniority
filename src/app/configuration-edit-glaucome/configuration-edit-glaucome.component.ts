@@ -17,7 +17,7 @@ export class ConfigurationEditGlaucomeComponent implements OnInit {
   configuration ?: Handicap<GlaucomeConfiguration>;
   falseChoices : Answer[] = [
     {
-      value : "Rome",
+      value : "Francois hollande",
       isCorrect : true,
     },
     {

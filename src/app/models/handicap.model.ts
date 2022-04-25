@@ -14,11 +14,13 @@ export class GlaucomeConfiguration implements Configuration {
   radius: number;
   activate_voice: boolean;
   circle_quiz: boolean;
+  fontSize: number;
 
   constructor() {
     this.radius = 0.25;
     this.activate_voice = true;
     this.circle_quiz = true;
+    this.fontSize = 16;
   }
 }
 
@@ -33,7 +35,7 @@ export class DaltonismeConfiguration implements Configuration {
 
   constructor() {
     this.activate_voice = true;
-    this.trueColor = "blue";
+    this.trueColor = "lightblue";
     this.falseColor = "grey";
     this.textColor = "black";
     this.boldAnswers = true;

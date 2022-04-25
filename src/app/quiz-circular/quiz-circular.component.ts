@@ -13,6 +13,7 @@ export class QuizCircularComponent implements OnInit {
   @Input() showResult ?: boolean;
   @Input() falseColor : string = "red";
   @Input() trueColor : string = "green";
+  @Input() fontSize : number = 20;
   @Input() goodAnswerCallback ?: () => void;
   @Input() falseAnswerCallback ?: () => void;
   @Input() circle : boolean = true;
@@ -25,6 +26,10 @@ export class QuizCircularComponent implements OnInit {
 
   get diameterStr() {
     return `${window.innerWidth * this.percentWidth}px`;
+  }
+
+  fontSizeReturn() {
+    return `${this.fontSize}px`;
   }
 
   correctColor(answer : Answer) {

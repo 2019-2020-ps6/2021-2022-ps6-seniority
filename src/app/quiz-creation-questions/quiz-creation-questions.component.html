@@ -42,7 +42,7 @@
         <div class="align align-center" [style.grid-column]="1" [style.grid-row]="1" >
           <mat-form-field appearance="fill">
             <mat-label>Réponse n°{{i}}</mat-label>
-            <input [(ngModel)]="answers[i].value" matInput placeholder="François Hollande" required >
+            <input [(ngModel)]="answers[i].value" maxlength="20" matInput placeholder="François Hollande (max 20 caractères)" required >
           </mat-form-field>
         </div>
         <div class="align-center align margin-center" [style.grid-row]="1" [style.grid-column]="2">

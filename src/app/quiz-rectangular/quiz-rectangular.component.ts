@@ -9,7 +9,7 @@ import {Answer} from "../models/answer.model";
 
 export class QuizRectangularComponent implements OnInit {
 
-  @Input() percentWidth : number = 0.5;
+  @Input() percentWidth : number = 0.6;
   @Input() choices : Answer[] = [];
   @Input() showResult ?: boolean;
   @Input() textColor : string = "black";

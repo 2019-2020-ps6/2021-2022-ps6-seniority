@@ -1,4 +1,4 @@
-<div class="container" [class.circle]="circle" [ngStyle]="{'width' : diameterStr,'height' : diameterStr}">
+<div class="container" [class.circle]="circle" [ngStyle]="{'width' : diameterStr,'height' : diameterStr, 'font-size': fontSizeReturn()}">
   <div class="one align text" (click)="clickOnTile(choices[0])" [ngStyle]="showResult && choices[0] ? {'background' : correctColor(choices[0])} : {}">
     <span>{{choices[0] ? choices[0].value : ""}}</span>
   </div>

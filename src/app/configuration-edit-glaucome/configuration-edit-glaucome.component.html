@@ -87,18 +87,30 @@
         aria-label="units">
       </mat-slider>
     </div>
-
+    <br>
+    <br>
+    <div class="margin-center align align-center sub-left-radius-second-slider">
+      Taille de la police
+      <mat-slider
+        [(ngModel)]="configuration.config.fontSize"
+        thumbLabel
+        step="1"
+        min="16"
+        max="40"
+        aria-label="units">
+      </mat-slider>
+    </div>
   </div>
   <div class="preview-container" [class.full-screen-preview-container]="fullScreenPreview">
     <div class="preview-title align align-center">
       Quelle est la capitale de l'italie ?
     </div>
     <div class="margin-center align-center align" *ngIf="configuration.config.circle_quiz">
-      <app-quiz-circular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
+      <app-quiz-circular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [fontSize]="configuration.config.fontSize" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
       </app-quiz-circular>
     </div>
     <div class="margin-center align-center align" *ngIf="!configuration.config.circle_quiz">
-      <app-quiz-rectangular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
+      <app-quiz-rectangular [showResult]="hasAnswered" [falseAnswerCallback]="falseAnswerFunction" [goodAnswerCallback]="goodAnswerFunction" [fontSize]="configuration.config.fontSize" [percentWidth]="configuration.config.radius" [choices]="falseChoices">
       </app-quiz-rectangular>
     </div>
   </div>
