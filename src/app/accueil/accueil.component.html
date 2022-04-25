@@ -11,7 +11,7 @@
   <mat-grid-tile colspan="7" rowspan="15">
     <div class='internalMatGrid' >
       <mat-grid-list gutterSize="15px" cols="2" rowHeight="4:1">
-        <mat-grid-tile *ngFor="let quiz of quizzes" (click)="playQuiz(quiz)">
+        <mat-grid-tile *ngFor="let quiz of first_quizzes;let i = index;" (click)="playQuiz(quiz)">
           {{quiz.name}}
         </mat-grid-tile>
       </mat-grid-list>
