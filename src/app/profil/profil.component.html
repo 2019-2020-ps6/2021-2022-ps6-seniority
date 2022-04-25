@@ -1,13 +1,13 @@
-<div class="icon align-center align margin-center">
-  <a routerLink="/accueil">
-  <button mat-icon-button>
-    <div style="font-size: 42px">
-      <mat-icon [inline]="true">home</mat-icon>
-    </div>
-  </button>
-  </a>
-</div>
 <div class="container" *ngIf="user">
+  <div class="align-center align margin-center">
+    <a style="color: black" routerLink="/accueil">
+      <button mat-icon-button>
+        <div style="font-size: 42px">
+          <mat-icon [inline]="true">home</mat-icon>
+        </div>
+      </button>
+    </a>
+  </div>
   <div class="title align-center align">
     <h1 style="text-align: center">Profil</h1>
   </div>
@@ -19,16 +19,16 @@
   </div>
   <div class="one align-center">
     <div class="inner-form">
-      <div class="one-inner align" style="font-size: 17px">
+      <div class="one-inner align">
         Nom : {{this.user.name}}
         <br>
         E-mail : {{this.user.email}}
       </div>
       <div class="two-inner align">
-        <button mat-stroked-button class="margin-center" color="grey" [style.width.px]="300" >Mes quiz</button>
+        <button mat-stroked-button class="buttonP" color="grey" [style.width.px]="300" >Mes quiz</button>
       </div>
       <div class="three-inner align">
-        <button mat-stroked-button class="margin-center" color="grey" [style.width.px]="300" >Déconnexion</button>
+        <button mat-stroked-button class="buttonP" color="grey" [style.width.px]="300" >Déconnexion</button>
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@
         </mat-list>
       </div>
       <div class="inner-form-bis-new-senior align">
-        <button routerLink="creation/senior" mat-stroked-button class="margin-center" color="grey" [style.width.px]="300" >Ajouter un nouvel accueilli</button>
+        <button routerLink="creation/senior" mat-stroked-button class="buttonP" color="grey" [style.width.px]="300" >Ajouter un nouvel accueilli</button>
       </div>
     </div>
   </div>

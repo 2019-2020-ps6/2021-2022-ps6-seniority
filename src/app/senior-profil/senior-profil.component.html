@@ -1,11 +1,13 @@
-<a routerLink="/accueil">
-  <button mat-icon-button>
-    <div style="font-size: 42px">
-      <mat-icon [inline]="true">home</mat-icon>
-    </div>
-  </button>
-</a>
 <div class="container" *ngIf="senior">
+  <div style="grid-column: 1;grid-row: 1;margin-left: 5%" class="align">
+    <a routerLink="/accueil" style="color: black">
+      <button  mat-icon-button>
+        <div style="font-size: 42px">
+          <mat-icon [inline]="true">home</mat-icon>
+        </div>
+      </button>
+    </a>
+  </div>
   <div class="title align align-center">
     Accueilli : {{senior.name}}
   </div>
