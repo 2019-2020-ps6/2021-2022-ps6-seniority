@@ -28,7 +28,7 @@
         <button mat-stroked-button class="buttonP" color="grey" [style.width.px]="300" >Mes quiz</button>
       </div>
       <div class="three-inner align">
-        <button mat-stroked-button class="buttonP" color="grey" [style.width.px]="300" >Déconnexion</button>
+        <button mat-stroked-button class="buttonP" color="grey" (click)="logout()" [style.width.px]="300" >Déconnexion</button>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
                 {{senior.name}}
               </div>
               <div class="inner-list-right align align-center">
-                <button class="margin-center" mat-icon-button aria-label="Supprimer">
+                <button class="margin-center" (click)="deleteSenior(senior,$event)" mat-icon-button aria-label="Supprimer">
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>

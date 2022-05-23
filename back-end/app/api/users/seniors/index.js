@@ -4,10 +4,12 @@ const { User, Senior} = require('../../../models')
 const manageAllErrors = require('../../../utils/routes/error-management')
 const {filterSeniorsFromUser, getSeniorFromUser} = require("./manager");
 const HandicapsRouter = require('./handicap');
+const StatsRouter = require('./stats');
 
 const router = new Router({ mergeParams: true })
 
 router.use('/:seniorId/handicaps', HandicapsRouter)
+router.use('/:seniorId/stats',StatsRouter)
 
 router.get('/', (req, res) => {
   try {

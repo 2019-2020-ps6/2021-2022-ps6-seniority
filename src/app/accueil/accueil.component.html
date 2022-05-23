@@ -10,7 +10,18 @@
       <mat-icon aria-hidden="false" aria-label="Account" routerLink="/profil" class="icon">account_circle</mat-icon>
     </button>
   </mat-grid-tile>
-  <mat-grid-tile colspan="7" rowspan="15">
+  <mat-grid-tile rowspan="6">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="5" rowspan="6">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Recherche</mat-label>
+      <input type="text" [(ngModel)]="searchInput" (ngModelChange)="search()" matInput placeholder="Géographie">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile rowspan="6">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="7" rowspan="9">
     <div class='internalMatGrid' >
       <mat-grid-list gutterSize="15px" cols="2" rowHeight="4:1">
         <mat-grid-tile *ngFor="let quiz of first_quizzes;let i = index;" (click)="playQuiz(quiz)">
@@ -20,6 +31,6 @@
     </div>
   </mat-grid-tile>
   <mat-grid-tile rowspan="3" colspan="7">
-    <button mat-stroked-button routerLink="/quiz/creation" color="grey">Ajouter un nouveau Quiz</button>
+    <button mat-stroked-button routerLink="/quiz/creation" class="button" color="grey">Ajouter un nouveau Quiz</button>
   </mat-grid-tile>
 </mat-grid-list>

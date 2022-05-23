@@ -23,7 +23,6 @@ export class QuizCreationComponent implements OnInit {
       name: [''],
       comments : ['']
     });
-    this.quizService.quizToAdd$.subscribe(console.log);
   }
 
   ngOnInit(): void {

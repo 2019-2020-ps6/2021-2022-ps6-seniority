@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../models/user.model";
 import {UserService} from "../services/user.service";
 import {Senior} from "../models/senior.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-profil',
@@ -16,7 +17,8 @@ export class ProfilComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private service: UserService,
-              private _router : Router) {
+              private _router : Router,
+              private matSnackBar : MatSnackBar) {
     this.seniors = [];
     this.service.user$.subscribe(next => {
       this.user = next;
@@ -32,6 +34,21 @@ export class ProfilComponent implements OnInit {
   chooseSenior(senior : Senior) {
     this.service.changeSenior(senior);
     this._router.navigateByUrl("/profil/senior/profil").then();
+  }
+
+  logout() {
+    this.service.logout();
+    this._router.navigateByUrl("/").then();
+  }
+
+  deleteSenior(senior : Senior,event : Event) {
+    event.stopPropagation();
+    this.service.removeSenior(senior).then(res => {
+      if (res)
+        this.matSnackBar.open("Le senior à bien été retiré" , 'OK', {
+          duration : 3000
+        });
+    })
   }
 
 }

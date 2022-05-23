@@ -1,13 +1,15 @@
 <div class="container" *ngIf="quiz" >
-  <a routerLink="/accueil">
-    <div class="icon align-center align margin-center">
-      <button mat-icon-button>
-        <div style="font-size: 42px">
-          <mat-icon [inline]="true">home</mat-icon>
-        </div>
-      </button>
-    </div>
-  </a>
+  <div class="icon margin-center align-center align">
+    <a style="color: black" routerLink="/accueil">
+      <div class="icon align-center align margin-center">
+        <button mat-icon-button>
+          <div style="font-size: 42px">
+            <mat-icon [inline]="true">home</mat-icon>
+          </div>
+        </button>
+      </div>
+    </a>
+  </div>
   <div class="align align-center title">
     {{quiz.name}}
   </div>

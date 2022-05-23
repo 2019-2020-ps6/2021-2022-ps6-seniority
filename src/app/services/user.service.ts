@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs";
 import {Senior} from "../models/senior.model";
 import {Configuration, default_handicap_from_string, Handicap} from "../models/handicap.model";
+import {Stats} from "../models/stats.model";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,6 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.seniors$.subscribe(next => this.updateSeniorsSelectedConfig(next));
-    this.userSelectedConfig$.subscribe(console.log);
   }
 
   updateSeniorsSelectedConfig(seniors: Senior[]) {
@@ -52,6 +52,11 @@ export class UserService {
         resolve(false);
       });
     });
+  }
+
+  logout() {
+    this.user = undefined;
+    this.user$.next(this.user);
   }
 
   logIn(user: User): Promise<boolean> {
@@ -137,22 +142,49 @@ export class UserService {
     });
   }
 
-  changeSenior(senior: Senior) {
+  removeSenior(senior: Senior): Promise<Boolean> {
+    return new Promise(resolve => {
+        this.http.delete(`${this.url}/${this.user?.id}/seniors/${senior.id}`).subscribe(next => {
+          this.getSeniors().then(t => {
+            if (t) resolve(true);
+            else resolve(false);
+          });
+        });
+      }
+    );
+  }
+
+  changeSenior(senior
+                 :
+                 Senior
+  ) {
     this.senior = senior;
     this.senior$.next(this.senior);
   }
 
-  changeHandicap(handicap: Handicap<any>) {
+  changeHandicap(handicap
+                   :
+                   Handicap<any>
+  ) {
     this.handicap = handicap;
     this.handicap$.next(this.handicap);
   }
 
-  setSeniorCurrentConfig(seniorId: string | undefined, handicap: Handicap<any>) {
+  setSeniorCurrentConfig(seniorId
+                           :
+                           string | undefined, handicap
+                           :
+                           Handicap<any>
+  ) {
     this.userSelectedConfig.set(seniorId, handicap);
     this.userSelectedConfig$.next(this.userSelectedConfig);
   }
 
-  updateHandicapConfig<T extends Configuration>(handicapConfig: Handicap<T>): Promise<any> {
+  updateHandicapConfig<T extends Configuration>(handicapConfig
+                                                  :
+                                                  Handicap<T>
+  ):
+    Promise<any> {
     return new Promise(resolve => {
       this.http.put(`${this.url}/${this.user?.id}/seniors/${this.senior?.id}/handicaps/${handicapConfig?.id}`, {...handicapConfig}).subscribe(next => {
         this.handicap = next as Handicap<any>;
@@ -163,4 +195,11 @@ export class UserService {
     });
   }
 
+  async getStatsSeniors() : Promise<Stats> {
+    return new Promise(resolve => {
+      this.http.get(`${this.url}/${this.user?.id}/seniors/${this.senior?.id}/stats`).subscribe(next => {
+        resolve(<Stats>next);
+      });
+    });
+  }
 }

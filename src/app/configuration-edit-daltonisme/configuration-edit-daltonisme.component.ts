@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {Senior} from "../models/senior.model";
 import {DaltonismeConfiguration, Handicap} from "../models/handicap.model";
 import {Answer} from "../models/answer.model";
@@ -16,29 +16,29 @@ export class ConfigurationEditDaltonismeComponent implements OnInit {
   senior ?: Senior;
 
   configuration ?: Handicap<DaltonismeConfiguration>;
-  falseChoices : Answer[] = [
+  falseChoices: Answer[] = [
     {
-      value : "Rome",
-      isCorrect : true,
+      value: "Rome",
+      isCorrect: true,
     },
     {
-      value : "Milan",
-      isCorrect : false,
+      value: "Milan",
+      isCorrect: false,
     },
     {
-      value : "Venice",
-      isCorrect : false,
+      value: "Venice",
+      isCorrect: false,
     },
     {
-      value : "Paris",
-      isCorrect : false
+      value: "Paris",
+      isCorrect: false
     }
   ];
 
-  hasAnswered : boolean = false;
-  fullScreenPreview : boolean = false;
+  hasAnswered: boolean = false;
+  fullScreenPreview: boolean = false;
 
-  constructor(private userService : UserService, private _router : Router, private matSnackBar : MatSnackBar) {
+  constructor(private userService: UserService, private _router: Router, private matSnackBar: MatSnackBar) {
     this.userService.senior$.subscribe(next => {
       this.senior = next;
     });
@@ -46,7 +46,7 @@ export class ConfigurationEditDaltonismeComponent implements OnInit {
       if (next?.config.type === 'Daltonisme') {
         this.configuration = next;
       }
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -71,6 +71,7 @@ export class ConfigurationEditDaltonismeComponent implements OnInit {
   save() {
     if (!this.configuration) return;
     this.userService.updateHandicapConfig(this.configuration).then(res => {
+      this.hasAnswered = false;
       if (res){
         this.matSnackBar.open('Configuration mis à jour !','OK', {
           duration : 3000

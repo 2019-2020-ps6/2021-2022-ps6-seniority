@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from "../models/quiz.model";
-import {QuizGame} from "../models/quiz.game.model";
 import {Senior} from "../models/senior.model";
 import {UserService} from "../services/user.service";
 import {QuizService} from "../services/quiz.service";
@@ -38,6 +37,7 @@ export class SelectSeniorPlayQuizComponent implements OnInit {
 
   launch() {
     const senior : Senior = this.seniors.filter(s => s.id === this.selectedId)[0];
+    this.quizGameService.updateCurrentPlayingSenior(senior);
     const hand : Handicap<any> = <Handicap<any>>this.selectConfigs.get(senior.id);
     this.quizGameService.updateCurrentConfig(hand);
     this._router.navigateByUrl(`/quiz/play/${<Configuration>(hand.config).type.toLowerCase()}`).then();

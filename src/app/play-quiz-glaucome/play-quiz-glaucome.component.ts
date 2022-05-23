@@ -10,6 +10,7 @@ import {Answer} from "../models/answer.model";
 import {UserService} from "../services/user.service";
 import {GlaucomeConfiguration} from "../models/handicap.model";
 import {config} from "rxjs";
+import {Senior} from "../models/senior.model";
 
 @Component({
   selector: 'app-play-quiz-glaucome',
@@ -21,6 +22,7 @@ export class PlayQuizGlaucomeComponent implements OnInit {
   quiz ?: Quiz;
   quizGame ?: QuizGame;
   currentQuestion ?: Question;
+  currentSenior ?: Senior;
   currentAnswers: Answer[] = [];
   hasAnswered ?: boolean;
   config ?: GlaucomeConfiguration;
@@ -29,6 +31,9 @@ export class PlayQuizGlaucomeComponent implements OnInit {
     this.quizGameService.gameQuiz$.subscribe(game => {
       this.quizGame = game;
     });
+    this.quizGameService.currentSeniorPlaying$.subscribe(senior => {
+      this.currentSenior = senior;
+    })
     this.quizGameService.question$.subscribe(question => {
       this.currentQuestion = question;
     })
@@ -44,11 +49,12 @@ export class PlayQuizGlaucomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.quiz) {
+    if (this.quiz && this.currentSenior) {
       this.quizGame = {
         points: 0,
         round: 0,
         quizId: this.quiz.id as number,
+        seniorId : this.currentSenior.id as string
       };
       this.quizGameService.createGameQuiz(this.quizGame).then(() => {
         this.initComponent().then(() => this.playAudio(this.currentQuestion));
@@ -102,7 +108,9 @@ export class PlayQuizGlaucomeComponent implements OnInit {
       this.hasAnswered = false;
       this.updateGame().then(() => this.playAudio(this.currentQuestion));
     } else {
-      this._router.navigateByUrl('/accueil').then(console.log);
+      this.quizGameService.updateGame().then(() => {
+        this._router.navigateByUrl('/accueil').then(console.log);
+      });
     }
   }
 

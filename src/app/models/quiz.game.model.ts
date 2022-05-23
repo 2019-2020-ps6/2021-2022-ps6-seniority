@@ -3,4 +3,5 @@ export interface QuizGame{
   quizId : number;
   points : number;
   round : number;
+  seniorId : string;
 }

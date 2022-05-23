@@ -56,6 +56,18 @@
       <div class="align align-center left-top-title">
         Statistiques
       </div>
+      <div class="align align-center nb-games-input-label info">
+        Nombre total de parties jouées
+      </div>
+      <div *ngIf="stats" class="align align-center nb-games-input info">
+        {{stats.totalNumberOfGames}}
+      </div>
+      <div *ngIf="stats" class="align-center align percent-input-label info">
+        Pourcentage de réussite
+      </div>
+      <div *ngIf="stats" class="align align-center percent-input info">
+        {{stats.percent.toFixed(2)}}%
+      </div>
     </div>
   </div>
 </div>

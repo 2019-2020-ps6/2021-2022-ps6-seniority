@@ -20,6 +20,14 @@
   font-size: 36px;
 }
 
+.button {
+  margin: 0 auto;
+  background: whitesmoke;
+  font-size: 20px;
+  box-shadow: rgb(0 0 0 / 15%) 0 5px 15px;
+  border-radius: 7px;
+}
+
 .internalMatGrid mat-grid-tile:hover{
   background: lightgray;
   cursor : pointer;

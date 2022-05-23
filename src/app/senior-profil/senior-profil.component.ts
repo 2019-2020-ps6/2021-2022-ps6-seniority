@@ -3,6 +3,8 @@ import {Senior} from "../models/senior.model";
 import {UserService} from "../services/user.service";
 import {Configuration, Handicap} from "../models/handicap.model";
 import {Router} from "@angular/router";
+import {Stats} from "../models/stats.model";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Component({
   selector: 'app-senior-profil',
@@ -15,10 +17,14 @@ export class SeniorProfilComponent implements OnInit {
   handicapName : string = "";
   handicapsConfig ?: Handicap<any>[];
   selectedConfig ?: Handicap<any>;
+  stats ?: Stats;
 
   constructor(private userService : UserService, private _router : Router) {
     this.userService.senior$.subscribe(next => {
       this.senior = next;
+      this.userService.getStatsSeniors().then(stats => {
+        this.stats = stats;
+      });
       this.userService.getAllHandicapsConfigs().then();
     });
     this.userService.handicaps$.subscribe(next => {
